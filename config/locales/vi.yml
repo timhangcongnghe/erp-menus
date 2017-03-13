@@ -1,0 +1,61 @@
+vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          menus: "Danh sách menu"
+          menu: "Menu"
+  erp:
+    menus:
+      backend:
+        menus:
+          create:
+            success: "Thêm menu thành công."
+          update:
+            success: "Cập nhật menu thành công."
+          destroy:
+            success: "Xóa menu thành công."
+          delete_all:
+            success: "Xóa menu được chọn thành công."
+          archive:
+            success: "Ẩn menu thành công."
+          unarchive:
+            success: "Hiện menu thành công."
+          archive_all:
+            success: "Ẩn menu được chọn thành công."
+          unarchive_all:
+            success: "Hiện menu được chọn thành công."
+          index:
+            menus: "Danh sách menu"
+            name: "Tên"
+            parent_menu: "Menu cha"
+            create: "Thêm menu"
+            delete: "Xóa menu"
+          list:
+            name: "Tên"
+            no_matching_records_found: "Danh sách menu hiện tại đang trống."
+          new:
+            menus: "Danh sách menu"
+            create: "Thêm menu"
+          edit:
+            menus: "Danh sách menu"
+            create: "Thêm menu"
+          form:
+            name: "Tên"
+            parent_menu: "Menu cha"
+            choose_parent_menu: "Chọn menu cha"
+            add_category: "Thêm chuyên mục"
+            create_category: "Tạo chuyên mục"
+            created_menu: "Tạo menu"
+            related_categories: "Chuyên mục liên quan"
+            choose_related_categories: "Chọn chuyên mục liên quan"
+  activerecord:
+    errors:
+      models:
+        erp/menus/menu:
+          attributes:
+            name:
+              blank: "không được để trống."
+    attributes:
+      erp/menus/menu:
+        name: "Tên"
