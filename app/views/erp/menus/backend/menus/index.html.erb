@@ -21,6 +21,14 @@
             text: t('.name'), name: 'erp_menus_menus.name'
         },
         {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
+        },
+        {
             text: t('.parent_menu'),
             name: 'parents_erp_menus_menus.name',
             select: {

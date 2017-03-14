@@ -43,6 +43,9 @@ module Erp::Menus
       end
       
       # join with users table for search creator
+      query = query.joins(:creator)
+      
+      # join with parent menu for search menu
       query = query.joins("LEFT JOIN erp_menus_menus parents_erp_menus_menus ON parents_erp_menus_menus.id = erp_menus_menus.parent_id")
       
       # showing archived items if show_archived is not true

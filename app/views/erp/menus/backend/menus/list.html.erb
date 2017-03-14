@@ -67,15 +67,15 @@
                                 href: erp_menus.edit_backend_menu_path(menu)
                             },
                             {
-                                text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
-                                url: erp_menus.archive_backend_menus_path(id: menu),
+                                text: '<i class="fa fa-remove"></i> '+t('archive'),
+                                url: erp_menus.archive_backend_menus_path(id: menu.id),
                                 data_method: 'PUT',
                                 hide: menu.archived,
                                 class: 'ajax-link'
                             },
                             {
-                                text: '<i class="fa fa-eye"></i> '+t('unarchive'),
-                                url: erp_menus.unarchive_backend_menus_path(id: menu),
+                                text: '<i class="fa fa-check"></i> '+t('unarchive'),
+                                url: erp_menus.unarchive_backend_menus_path(id: menu.id),
                                 data_method: 'PUT',
                                 hide: !menu.archived,
                                 class: 'ajax-link'
