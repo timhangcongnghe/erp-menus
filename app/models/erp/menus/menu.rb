@@ -7,33 +7,28 @@ module Erp::Menus
     has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
     
     # class const
-    MENU_TOP_BAR = 'top_bar'
-    MENU_SIDEBAR = 'sidebar'
-    MENU_HOT_CATEGORY_1 = 'menu_hot_category_1'
-    MENU_HOT_CATEGORY_2 = 'menu_hot_category_2'
-    MENU_HOT_CATEGORY_3 = 'menu_hot_category_3'
-    MENU_HOT_CATEGORY_4 = 'menu_hot_category_4'
-    MENU_HOT_CATEGORY_5 = 'menu_hot_category_5'
-    MENU_HOT_CATEGORY_6 = 'menu_hot_category_6'
-    MENU_HOT_CATEGORY_7 = 'menu_hot_category_7'
-    MENU_HOT_CATEGORY_8 = 'menu_hot_category_8'
-    MENU_HOT_CATEGORY_9 = 'menu_hot_category_9'
-    MENU_HOT_CATEGORY_10 = 'menu_hot_category_10'
+    MENU_TOP_BAR = 'menu_top_bar'
+    MENU_SIDEBAR = 'menu_sidebar'
+    MENU_HOT = 'menu_hot'
+    
+    STYLE_COLOR_1 = 'supper1'
+    STYLE_COLOR_2 = 'supper2'
+    STYLE_COLOR_3 = 'supper3'
+    
+    def self.get_style_color_options()
+      [
+				{text: '', value: ''},
+        {text: I18n.t('erp_menus_menus.dark_cyan'), value: STYLE_COLOR_1},
+        {text: I18n.t('erp_menus_menus.outrageous_orange'), value: STYLE_COLOR_2},
+        {text: I18n.t('erp_menus_menus.fruit_salad'), value: STYLE_COLOR_3}
+      ]
+    end
     
     def self.get_menu_type_options()
       [
         {text: I18n.t('erp_menus_menus.top_bar'), value: MENU_TOP_BAR},
         {text: I18n.t('erp_menus_menus.sidebar'), value: MENU_SIDEBAR},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_1'), value: MENU_HOT_CATEGORY_1},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_2'), value: MENU_HOT_CATEGORY_2},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_3'), value: MENU_HOT_CATEGORY_3},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_4'), value: MENU_HOT_CATEGORY_4},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_5'), value: MENU_HOT_CATEGORY_5},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_6'), value: MENU_HOT_CATEGORY_6},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_7'), value: MENU_HOT_CATEGORY_7},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_8'), value: MENU_HOT_CATEGORY_8},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_9'), value: MENU_HOT_CATEGORY_9},
-        {text: I18n.t('erp_menus_menus.menu_hot_category_10'), value: MENU_HOT_CATEGORY_10}
+        {text: I18n.t('erp_menus_menus.menu_hot'), value: MENU_HOT}
       ]
     end
     
@@ -53,6 +48,11 @@ module Erp::Menus
     
     def self.get_menu_search
 			self.get_active.where(menu_type: MENU_SIDEBAR)
+					.where(parent_id: nil).first.children
+		end
+    
+    def self.get_menu_hot
+			self.get_active.where(menu_type: MENU_HOT)
 					.where(parent_id: nil).first.children
 		end
     

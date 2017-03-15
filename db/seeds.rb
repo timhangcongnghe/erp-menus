@@ -322,161 +322,315 @@ father2 = Erp::Menus::Menu.create(
     menu_type: Erp::Menus::Menu::MENU_SIDEBAR
   )
 # HOT CATEGORY 1
-puts "Create hot category 1"
+puts "Create menu hot"
 father3 = Erp::Menus::Menu.create(
-  name: "Menu Hot Category 1",
-  menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1,
+  name: "Menu Hot",
+  menu_type: Erp::Menus::Menu::MENU_HOT,
   creator_id: user.id,
   parent_id: nil
 )
   # MÁY TÍNH
-  father31 = father2.children.create(
+  father31 = father3.children.create(
     name: "Máy Tính",
     creator_id: user.id,
-    menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+    style_icon: '<i class="fa fa-laptop"></i>',
+    style_color: Erp::Menus::Menu::STYLE_COLOR_1,
+    menu_type: Erp::Menus::Menu::MENU_HOT
   )
     father311 = father31.children.create(
-      name: "Máy Tính Xách Tay - Laptop",
+      name: "Máy Tính Xách Tay",
       creator_id: user.id,
-      menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+      menu_type: Erp::Menus::Menu::MENU_HOT
     )
       father311.children.create(
         name: "Acer",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "Asus",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "HP",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "Dell",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "Lenovo",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "Toshiba",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "All In One",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father311.children.create(
         name: "Khác",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
     father312 = father31.children.create(
-      name: "Máy Tính Để Bàn - PC",
+      name: "Máy Tính Để Bàn",
       creator_id: user.id,
-      menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+      menu_type: Erp::Menus::Menu::MENU_HOT
     )
-      father311.children.create(
+      father312.children.create(
         name: "Tìm Hàng Công Nghệ",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "Acer",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "Asus",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "Dell",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "HP",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "Lenovo",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
-      father311.children.create(
+      father312.children.create(
         name: "Khác",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
     father313 = father31.children.create(
       name: "Máy Chủ - Server",
       creator_id: user.id,
-      menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+      menu_type: Erp::Menus::Menu::MENU_HOT
     )
       father313.children.create(
         name: "Dell",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father313.children.create(
         name: "HP",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father313.children.create(
         name: "Lenovo",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father313.children.create(
         name: "Robo",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father313.children.create(
         name: "Lắp theo yêu cầu",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
     father314 = father31.children.create(
       name: "Phần Mềm",
       creator_id: user.id,
-      menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+      menu_type: Erp::Menus::Menu::MENU_HOT
     )
       father314.children.create(
         name: "Phần Mềm Microsoft",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father314.children.create(
         name: "Phần Mềm Office",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father314.children.create(
         name: "Phần Mềm Diệt Virus",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
       father314.children.create(
         name: "Phần Mềm Ứng Dụng",
         creator_id: user.id,
-        menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+        menu_type: Erp::Menus::Menu::MENU_HOT
       )
     father315 = father31.children.create(
       name: "Phụ Kiện",
       creator_id: user.id,
-      menu_type: Erp::Menus::Menu::MENU_HOT_CATEGORY_1
+      menu_type: Erp::Menus::Menu::MENU_HOT
     )
+      father315.children.create(
+        name: "Ram",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father315.children.create(
+        name: "Pin",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father315.children.create(
+        name: "Adapter",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father315.children.create(
+        name: "Keyboard",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father315.children.create(
+        name: "Quạt tản nhiệt",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+  # THIẾT BỊ TIN HỌC
+  father32 = father3.children.create(
+    name: "Thiết Bị Tin Học",
+    creator_id: user.id,
+    style_icon: '<i class="fa fa-headphones"></i>',
+    style_color: Erp::Menus::Menu::STYLE_COLOR_2,
+    menu_type: Erp::Menus::Menu::MENU_HOT
+  )
+    father321 = father32.children.create(
+      name: "Mainboard",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_HOT
+    )
+      father321.children.create(
+        name: "ASRock",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "Asus",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "Foxcom",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "Gigabyte",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "Intel",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "MSI",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father321.children.create(
+        name: "Socket AMD",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+    father322 = father32.children.create(
+      name: "CPU - Bộ Xử Lý",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_HOT
+    )
+      father322.children.create(
+        name: "CPU AMD",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father322.children.create(
+        name: "CPU Intel",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+    father323 = father32.children.create(
+      name: "Ram",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_HOT
+    )
+      father323.children.create(
+        name: "Kingmax",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "Kingston",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "Corsair",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "Team",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "G.Skill",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "Geil",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+      father323.children.create(
+        name: "Panram",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_HOT
+      )
+  # THIẾT BỊ VĂN PHÒNG
+  father33 = father3.children.create(
+    name: "Thiết Bị Văn Phòng",
+    creator_id: user.id,
+    style_icon: '<i class="fa fa-print"></i>',
+    style_color: Erp::Menus::Menu::STYLE_COLOR_3,
+    menu_type: Erp::Menus::Menu::MENU_HOT
+  )
+  # THIẾT BỊ KỸ THUẬT SỐ
+  father34 = father3.children.create(
+    name: "Thiết Bị Kỹ Thuật Số",
+    creator_id: user.id,
+    style_icon: '<i class="fa fa-video-camera"></i>',
+    style_color: Erp::Menus::Menu::STYLE_COLOR_1,
+    menu_type: Erp::Menus::Menu::MENU_HOT
+  )
+  # THIẾT BỊ MẠNG
+  father35 = father3.children.create(
+    name: "Thiết Bị Mạng",
+    creator_id: user.id,
+    style_icon: '<i class="fa fa-wifi"></i>',
+    style_color: Erp::Menus::Menu::STYLE_COLOR_2,
+    menu_type: Erp::Menus::Menu::MENU_HOT
+  )

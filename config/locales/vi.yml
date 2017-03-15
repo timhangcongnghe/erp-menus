@@ -2,16 +2,10 @@ vi:
   erp_menus_menus:
     top_bar: "Menu TopBar"
     sidebar: "Menu Sidebar"
-    menu_hot_category_1: "Menu theo chuyên mục hot 1"
-    menu_hot_category_2: "Menu theo chuyên mục hot 2"
-    menu_hot_category_3: "Menu theo chuyên mục hot 3"
-    menu_hot_category_4: "Menu theo chuyên mục hot 4"
-    menu_hot_category_5: "Menu theo chuyên mục hot 5"
-    menu_hot_category_6: "Menu theo chuyên mục hot 6"
-    menu_hot_category_7: "Menu theo chuyên mục hot 7"
-    menu_hot_category_8: "Menu theo chuyên mục hot 8"
-    menu_hot_category_9: "Menu theo chuyên mục hot 9"
-    menu_hot_category_10: "Menu theo chuyên mục hot 10"
+    menu_hot: "Menu Hot"
+    dark_cyan: "Dark Cyan"
+    outrageous_orange: "Outrageous Orange"
+    fruit_salad: "Fruit Salad"
   layouts:
     erp:
       backend:
