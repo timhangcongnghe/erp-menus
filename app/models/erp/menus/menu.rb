@@ -37,8 +37,22 @@ module Erp::Menus
       ]
     end
     
+    def self.get_active
+			self.where(archived: false)
+		end
+    
     def self.get_menu_topbar
-			self.where(menu_type: MENU_TOP_BAR)
+			self.get_active.where(menu_type: MENU_TOP_BAR)
+					.where(parent_id: nil).first.children
+		end
+    
+    def self.get_menu_sidebar
+			self.get_active.where(menu_type: MENU_SIDEBAR)
+					.where(parent_id: nil).first.children
+		end
+    
+    def self.get_menu_search
+			self.get_active.where(menu_type: MENU_SIDEBAR)
 					.where(parent_id: nil).first.children
 		end
     
