@@ -27,6 +27,8 @@ module Erp
     
         # POST /menus
         def create
+          @menu = Menu.new(menu_params)
+          @menu.creator = current_user
           if @menu.save
             if request.xhr?
               render json: {
@@ -163,7 +165,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def menu_params
-            params.fetch(:menu, {}).permit(:name, :parent_id, category_ids: [])
+            params.fetch(:menu, {}).permit(:name, :parent_id, :menu_type, category_ids: [])
           end
       end
     end

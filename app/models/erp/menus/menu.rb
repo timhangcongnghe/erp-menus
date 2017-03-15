@@ -1,10 +1,46 @@
 module Erp::Menus
   class Menu < ApplicationRecord
-    validates :name, :presence => true
+    validates :name, :menu_type, :presence => true
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :parent, class_name: "Erp::Menus::Menu", optional: true
     has_many :children, class_name: "Erp::Menus::Menu", foreign_key: "parent_id"
     has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
+    
+    # class const
+    MENU_TOP_BAR = 'top_bar'
+    MENU_SIDEBAR = 'sidebar'
+    MENU_HOT_CATEGORY_1 = 'menu_hot_category_1'
+    MENU_HOT_CATEGORY_2 = 'menu_hot_category_2'
+    MENU_HOT_CATEGORY_3 = 'menu_hot_category_3'
+    MENU_HOT_CATEGORY_4 = 'menu_hot_category_4'
+    MENU_HOT_CATEGORY_5 = 'menu_hot_category_5'
+    MENU_HOT_CATEGORY_6 = 'menu_hot_category_6'
+    MENU_HOT_CATEGORY_7 = 'menu_hot_category_7'
+    MENU_HOT_CATEGORY_8 = 'menu_hot_category_8'
+    MENU_HOT_CATEGORY_9 = 'menu_hot_category_9'
+    MENU_HOT_CATEGORY_10 = 'menu_hot_category_10'
+    
+    def self.get_menu_type_options()
+      [
+        {text: I18n.t('erp_menus_menus.top_bar'), value: MENU_TOP_BAR},
+        {text: I18n.t('erp_menus_menus.sidebar'), value: MENU_SIDEBAR},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_1'), value: MENU_HOT_CATEGORY_1},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_2'), value: MENU_HOT_CATEGORY_2},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_3'), value: MENU_HOT_CATEGORY_3},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_4'), value: MENU_HOT_CATEGORY_4},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_5'), value: MENU_HOT_CATEGORY_5},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_6'), value: MENU_HOT_CATEGORY_6},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_7'), value: MENU_HOT_CATEGORY_7},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_8'), value: MENU_HOT_CATEGORY_8},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_9'), value: MENU_HOT_CATEGORY_9},
+        {text: I18n.t('erp_menus_menus.menu_hot_category_10'), value: MENU_HOT_CATEGORY_10}
+      ]
+    end
+    
+    def self.get_menu_topbar
+			self.where(menu_type: MENU_TOP_BAR)
+					.where(parent_id: nil).first.children
+		end
     
     # Filters
     def self.filter(query, params)

@@ -3,7 +3,8 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
     create_table :erp_menus_menus do |t|
       t.string :name
       t.integer :parent_id
-      t.string :archived, default: false
+      t.string :menu_type
+      t.boolean :archived, default: false
       t.references :creator, index: true, references: :erp_users
 
       t.timestamps

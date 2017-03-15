@@ -1,4 +1,17 @@
 vi:
+  erp_menus_menus:
+    top_bar: "Menu TopBar"
+    sidebar: "Menu Sidebar"
+    menu_hot_category_1: "Menu theo chuyên mục hot 1"
+    menu_hot_category_2: "Menu theo chuyên mục hot 2"
+    menu_hot_category_3: "Menu theo chuyên mục hot 3"
+    menu_hot_category_4: "Menu theo chuyên mục hot 4"
+    menu_hot_category_5: "Menu theo chuyên mục hot 5"
+    menu_hot_category_6: "Menu theo chuyên mục hot 6"
+    menu_hot_category_7: "Menu theo chuyên mục hot 7"
+    menu_hot_category_8: "Menu theo chuyên mục hot 8"
+    menu_hot_category_9: "Menu theo chuyên mục hot 9"
+    menu_hot_category_10: "Menu theo chuyên mục hot 10"
   layouts:
     erp:
       backend:
@@ -46,6 +59,7 @@ vi:
             choose_parent_menu: "Chọn menu cha"
             add_category: "Thêm chuyên mục"
             create_category: "Tạo chuyên mục"
+            menu_type: "Loại menu"
             created_menu: "Tạo menu"
             related_categories: "Chuyên mục liên quan"
             choose_related_categories: "Chọn chuyên mục liên quan"
@@ -56,6 +70,9 @@ vi:
           attributes:
             name:
               blank: "không được để trống."
+            menu_type:
+              blank: "không được để trống."
     attributes:
       erp/menus/menu:
         name: "Tên"
+        menu_type: "Loại menu"
