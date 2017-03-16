@@ -9,6 +9,21 @@
                     <%= t('.name') %>
                 </th>
             <% end %>
+            <% if get_columns(params).include?("parent_name") %>
+                <th>
+                    <%= t('.parent_name') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("menu_type") %>
+                <th>
+                    <%= t('.menu_type') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("categories_name") %>
+                <th>
+                    <%= t('.categories_name') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -35,6 +50,23 @@
                 </td>
                 <% if get_columns(params).include?("name") %>
                     <td><%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %></td>
+                <% end %>
+                <% if get_columns(params).include?("parent_name") %>
+                    <td>
+                        <%= menu.parent.name %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("menu_type") %>
+                    <td>
+                        <%= menu.menu_type %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("categories_name") %>
+                    <td>
+                        <% menu.categories.each do |cat| %>
+                            <%= cat.name %>
+                        <% end %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
                 <td>

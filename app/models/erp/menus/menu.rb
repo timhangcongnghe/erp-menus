@@ -153,5 +153,42 @@ module Erp::Menus
     def parent_name
 			parent.present? ? parent.name : ''
 		end
+    
+    # get self and children ids
+    def get_self_and_children_ids
+      ids = [self.id]
+      ids += get_children_ids_recursive
+      return ids
+		end
+    
+    # get children ids recursive
+    def get_children_ids_recursive
+      ids = []
+      children.each do |c|
+				if !c.children.empty?
+					ids += c.get_children_ids_recursive
+				end
+				ids << c.id
+			end
+      return ids
+		end
+    
+    def get_products_for_categories(params)
+			records = Erp::Products::Product.get_active
+												.where(category_id: self.get_all_related_category_ids)
+			return records
+		end
+    
+    def get_all_related_category_ids
+			category_ids = []
+			menu_ids = self.get_self_and_children_ids
+			menu_ids.each do |menu_id|
+				menu = Menu.find(menu_id)
+				menu.categories.each do |category|
+					category_ids += category.get_self_and_children_ids
+				end
+			end
+			return category_ids.uniq
+		end
   end
 end
