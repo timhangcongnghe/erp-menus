@@ -12,6 +12,11 @@ Erp::Menus::Engine.routes.draw do
 					put 'unarchive_all'
 				end
 			end
+			resources :related_menus do
+				collection do
+          get 'related_menu_line_form'
+				end
+			end
 		end
 	end
 end

@@ -57,6 +57,18 @@ vi:
             created_menu: "Tạo menu"
             related_categories: "Chuyên mục liên quan"
             choose_related_categories: "Chọn chuyên mục liên quan"
+            related_menu: "Menu liên quan"
+            help_menu: "Chọn menu liên quan để hiển thị"
+            create_menu: "Thêm menu"
+            edit_menu: "Chỉnh sửa menu"
+            choose_related_menu: "Chọn menu liên quan"
+            add: "Thêm"
+            description: "Mô tả menu"
+            enter_description: "Nhập mô tả"
+            meta_keywords: "Từ khóa thẻ Meta"
+            enter_meta_keywords: "Nhập từ khóa thẻ Meta"
+            meta_description: "Mô tả thẻ Meta"
+            enter_meta_description: "Nhập mô tả thẻ Meta"
   activerecord:
     errors:
       models:

@@ -6,6 +6,10 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
       t.string :menu_type
       t.string :style_icon
       t.string :style_color
+      t.string :image_url
+      t.text :description
+      t.text :meta_keywords
+      t.text :meta_description
       t.boolean :archived, default: false
       t.references :creator, index: true, references: :erp_users
 

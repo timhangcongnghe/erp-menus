@@ -1,9 +1,12 @@
 module Erp::Menus
   class Menu < ApplicationRecord
+		mount_uploader :image_url, Erp::Menus::MenuImageUploader
     validates :name, :menu_type, :presence => true
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :parent, class_name: "Erp::Menus::Menu", optional: true
     has_many :children, class_name: "Erp::Menus::Menu", foreign_key: "parent_id"
+    has_many :related_menus, foreign_key: "parent_id", inverse_of: :parent, dependent: :destroy
+    accepts_nested_attributes_for :related_menus, :reject_if => lambda { |a| a[:menu_id].blank? }
     has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
     
     # class const
@@ -130,7 +133,7 @@ module Erp::Menus
         query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
       end
       
-      query = query.limit(8).map{|menu| {value: menu.id, text: menu.name} }
+      query = query.limit(8).map{|menu| {value: menu.id, text: menu.name+ ' - ' + menu.menu_type} }
     end
     
     def archive
