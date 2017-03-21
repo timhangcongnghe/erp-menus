@@ -10,6 +10,8 @@ Erp::Menus::Engine.routes.draw do
 					put 'unarchive'
 					put 'archive_all'
 					put 'unarchive_all'
+					put 'move_up'
+          put 'move_down'
 				end
 			end
 			resources :related_menus do

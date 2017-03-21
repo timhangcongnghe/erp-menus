@@ -2,7 +2,7 @@ module Erp
   module Menus
     module Backend
       class MenusController < Erp::Backend::BackendController
-        before_action :set_menu, only: [:archive, :unarchive, :edit, :update, :destroy]
+        before_action :set_menu, only: [:move_up, :move_down, :archive, :unarchive, :edit, :update, :destroy]
         before_action :set_menus, only: [:delete_all, :archive_all, :unarchive_all]
     
         # GET /menus
@@ -151,6 +151,34 @@ module Erp
               render json: Menu.dataselect(params[:keyword])
             }
           end
+        end
+        
+        # Move up /categories/up?id=1
+        def move_up      
+          @menu.move_up
+          
+          respond_to do |format|
+          format.json {
+            render json: {
+            #'message': t('.success'),
+            #'type': 'success'
+            }
+          }
+          end          
+        end
+        
+        # Move down /categories/up?id=1
+        def move_down     
+          @menu.move_down
+          
+          respond_to do |format|
+          format.json {
+            render json: {
+            #'message': t('.success'),
+            #'type': 'success'
+            }
+          }
+          end          
         end
     
         private

@@ -1,5 +1,7 @@
 module Erp::Menus
   class Menu < ApplicationRecord
+		include Erp::CustomOrder
+		
 		mount_uploader :image_url, Erp::Menus::MenuImageUploader
     validates :name, :menu_type, :presence => true
     belongs_to :creator, class_name: "Erp::User"
@@ -26,6 +28,8 @@ module Erp::Menus
     STYLE_COLOR_1 = 'supper1'
     STYLE_COLOR_2 = 'supper2'
     STYLE_COLOR_3 = 'supper3'
+    
+    after_save :update_level
     
     def self.get_style_color_options()
       [
@@ -203,6 +207,23 @@ module Erp::Menus
 				end
 				return category_ids.uniq
 			end
+		end
+    
+    # init custom order
+    def init_custom_order
+			self.update_column(:custom_order, self.class.maximum("custom_order").to_i + 1)
+		end
+    
+    # update level
+    def update_level
+			level = 1
+			parent = self.parent
+			while parent.present?
+				level += 1
+				parent = parent.parent
+			end
+			
+			level
 		end
   end
 end
