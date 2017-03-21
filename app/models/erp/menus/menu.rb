@@ -7,7 +7,16 @@ module Erp::Menus
     has_many :children, class_name: "Erp::Menus::Menu", foreign_key: "parent_id"
     has_many :related_menus, foreign_key: "parent_id", inverse_of: :parent, dependent: :destroy
     accepts_nested_attributes_for :related_menus, :reject_if => lambda { |a| a[:menu_id].blank? }
-    has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
+    
+    if Erp::Core.available?("products")
+			has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
+			belongs_to :brand_group, class_name: "Erp::Products::BrandGroup"
+			
+			# display brand group name
+			def brand_group_name
+				brand_group.present? ? brand_group.name : ''
+			end
+		end
     
     # class const
     MENU_TOP_BAR = 'menu_top_bar'
@@ -155,7 +164,7 @@ module Erp::Menus
     # display name
     def parent_name
 			parent.present? ? parent.name : ''
-		end
+		end    
     
     # get self and children ids
     def get_self_and_children_ids
@@ -176,22 +185,24 @@ module Erp::Menus
       return ids
 		end
     
-    def get_products_for_categories(params)
-			records = Erp::Products::Product.get_active
-												.where(category_id: self.get_all_related_category_ids)
-			return records
-		end
-    
-    def get_all_related_category_ids
-			category_ids = []
-			menu_ids = self.get_self_and_children_ids
-			menu_ids.each do |menu_id|
-				menu = Menu.find(menu_id)
-				menu.categories.each do |category|
-					category_ids += category.get_self_and_children_ids
-				end
+    if Erp::Core.available?("products")
+			def get_products_for_categories(params)
+				records = Erp::Products::Product.get_active
+													.where(category_id: self.get_all_related_category_ids)
+				return records
 			end
-			return category_ids.uniq
+			
+			def get_all_related_category_ids
+				category_ids = []
+				menu_ids = self.get_self_and_children_ids
+				menu_ids.each do |menu_id|
+					menu = Menu.find(menu_id)
+					menu.categories.each do |category|
+						category_ids += category.get_self_and_children_ids
+					end
+				end
+				return category_ids.uniq
+			end
 		end
   end
 end

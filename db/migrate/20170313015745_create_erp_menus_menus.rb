@@ -13,6 +13,7 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
       t.text :meta_description
       t.boolean :archived, default: false
       t.references :creator, index: true, references: :erp_users
+      t.references :brand_group, index: true, references: :erp_products_brand_groups
 
       t.timestamps
     end
