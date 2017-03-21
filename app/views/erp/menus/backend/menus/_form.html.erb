@@ -18,6 +18,7 @@
                                     name: 'menu[name]',
                                     value: menu.name,                   
                                     label: t('.name'),
+                                    placeholder: t('.enter_name'),
                                     required: true,
                                     errors: menu.errors.full_messages_for(:name)
                                 }) %>
@@ -57,7 +58,12 @@
             <div class="col-md-6">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
-                        
+                        <%= erp_form_control("text", {
+                            name: 'menu[image_product_link]',
+                            value: menu.image_product_link,                   
+                            label: t('.image_product_link'),
+                            placeholder: t('.enter_image_product_link'),
+                        }) %>
                         <div class="row">
                             <div class="col-sm-6">
                                 <%= erp_form_control("text", {

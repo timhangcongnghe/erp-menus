@@ -49,6 +49,7 @@ vi:
             create: "Thêm menu"
           form:
             name: "Tên"
+            enter_name: "Nhập tên menu"
             parent_menu: "Menu cha"
             choose_parent_menu: "Chọn menu cha"
             add_category: "Thêm chuyên mục"
@@ -69,6 +70,8 @@ vi:
             enter_meta_keywords: "Nhập từ khóa thẻ Meta"
             meta_description: "Mô tả thẻ Meta"
             enter_meta_description: "Nhập mô tả thẻ Meta"
+            image_product_link: "Liên kết cần chèn"
+            enter_image_product_link: "Đưa liên kết cần chèn cho hình ảnh"
   activerecord:
     errors:
       models:

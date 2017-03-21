@@ -7,6 +7,7 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
       t.string :style_icon
       t.string :style_color
       t.string :image_url
+      t.string :image_product_link
       t.text :description
       t.text :meta_keywords
       t.text :meta_description
