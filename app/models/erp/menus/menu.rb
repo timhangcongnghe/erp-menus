@@ -18,6 +18,10 @@ module Erp::Menus
 			def brand_group_name
 				brand_group.present? ? brand_group.name : ''
 			end
+			
+			def get_brand_groups
+				brand_group.brand_group_details
+			end
 		end
     
     # class const
@@ -168,7 +172,7 @@ module Erp::Menus
     # display name
     def parent_name
 			parent.present? ? parent.name : ''
-		end    
+		end      
     
     # get self and children ids
     def get_self_and_children_ids
@@ -187,6 +191,24 @@ module Erp::Menus
 				ids << c.id
 			end
       return ids
+		end
+    
+    def get_same_level_menus
+			return self.parent.nil? ? Menu.where(level: 1) : self.parent.children
+		end
+    
+    def get_related_sidebar_menus
+			if self.children.empty?
+				{
+					menus: self.get_same_level_menus,
+					parent: (self.get_same_level_menus.empty? or self.get_same_level_menus.first.parent.nil?) ? 'Chuyên mục' : self.get_same_level_menus.first.parent
+				}
+			else
+				{
+					menus: self.children,
+					parent: self
+				}
+			end
 		end
     
     if Erp::Core.available?("products")
