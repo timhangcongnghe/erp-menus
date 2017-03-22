@@ -2,7 +2,8 @@ module Erp::Menus
   class Menu < ApplicationRecord
 		include Erp::CustomOrder
 		
-		mount_uploader :image_url, Erp::Menus::MenuImageUploader
+		mount_uploader :image_url_1, Erp::Menus::MenuImageUploader
+		mount_uploader :image_url_2, Erp::Menus::MenuImageUploader
     validates :name, :menu_type, :presence => true
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :parent, class_name: "Erp::Menus::Menu", optional: true
