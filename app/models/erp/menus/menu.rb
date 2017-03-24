@@ -215,7 +215,7 @@ module Erp::Menus
     if Erp::Core.available?("products")
 			def get_products_for_categories(params)
 				records = Erp::Products::Product.get_active
-													.where(category_id: self.get_all_related_category_ids)
+													.where(category_id: self.get_all_related_category_ids)				
 				return records
 			end
 			
