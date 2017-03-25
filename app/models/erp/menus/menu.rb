@@ -26,7 +26,6 @@ module Erp::Menus
 		end
     
     # class const
-    MENU_TOP_BAR = 'menu_top_bar'
     MENU_SIDEBAR = 'menu_sidebar'
     MENU_HOT = 'menu_hot'
     
@@ -47,7 +46,6 @@ module Erp::Menus
     
     def self.get_menu_type_options()
       [
-        {text: I18n.t('erp_menus_menus.top_bar'), value: MENU_TOP_BAR},
         {text: I18n.t('erp_menus_menus.sidebar'), value: MENU_SIDEBAR},
         {text: I18n.t('erp_menus_menus.menu_hot'), value: MENU_HOT}
       ]
@@ -55,11 +53,6 @@ module Erp::Menus
     
     def self.get_active
 			self.where(archived: false)
-		end
-    
-    def self.get_menu_topbar
-			self.get_active.where(menu_type: MENU_TOP_BAR)
-					.where(parent_id: nil).first.children
 		end
     
     def self.get_menu_sidebar
