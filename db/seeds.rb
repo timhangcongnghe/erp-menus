@@ -8,42 +8,185 @@ father2 = Erp::Menus::Menu.create(
   creator_id: user.id,
   parent_id: nil
 )
-  # SẢN PHẨM APPLE
+  # Sản phẩm HP
   father21 = father2.children.create(
-    name: "Sản Phẩm Apple",
+    name: "Sản Phẩm HP",
     creator_id: user.id,
     menu_type: Erp::Menus::Menu::MENU_SIDEBAR
   )
-    # IPAD
-    father21.children.create(
-      name: "IPad",
+    # Máy Tính Xách Tay - Laptop
+    father211 = father21.children.create(
+      name: "Máy Tính Xách Tay - Laptop",
       creator_id: user.id,
       menu_type: Erp::Menus::Menu::MENU_SIDEBAR
     )
-    # MACBOOK
-    father21.children.create(
-      name: "Macbook",
+      father211.children.create(
+        name: "Dòng Elitebook",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father211.children.create(
+        name: "Dòng Pavilion",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father211.children.create(
+        name: "Dòng Probook",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father211.children.create(
+        name: "Dòng Envy",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )         
+      father211.children.create(
+        name: "Dòng Khác",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+    # Máy Tính Để Bàn
+    father212 = father21.children.create(
+      name: "Máy Tính Để Bàn",
       creator_id: user.id,
       menu_type: Erp::Menus::Menu::MENU_SIDEBAR
     )
-    # IMAC
-    father21.children.create(
-      name: "IMac",
+      father212.children.create(
+        name: "Máy Tính Cá Nhân - PC",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father212.children.create(
+        name: "Máy Tính Chuyên Dụng - Workstation",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father212.children.create(
+        name: "Máy Tính All In One",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father212.children.create(
+        name: "Máy Tính Thin Client",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+    # Máy Chủ - Server
+    father213 = father21.children.create(
+      name: "Máy Chủ - Server",
       creator_id: user.id,
       menu_type: Erp::Menus::Menu::MENU_SIDEBAR
     )
-    # IPHONE
-    father21.children.create(
-      name: "IPhone",
+    # Thiết Bị Chuyển Mạch - Switch
+    father214 = father21.children.create(
+      name: "Thiết Bị Chuyển Mạch - Switch",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+    ) 
+    # Sản Phẩm Lưu Trữ - Storage
+    father215 = father21.children.create(
+      name: "Sản Phẩm Lưu Trữ - Storage",
       creator_id: user.id,
       menu_type: Erp::Menus::Menu::MENU_SIDEBAR
     )
-    # PHỤ KIỆN
-    father21.children.create(
-      name: "Phụ Kiện",
+      father215.children.create(
+        name: "NAS Storage",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father215.children.create(
+        name: "SAN Storage",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father215.children.create(
+        name: "Phụ Kiện Storage",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      ) 
+    # Sản Phẩm Văn Phòng
+    father216 = father21.children.create(
+      name: "Sản Phẩm Văn Phòng",
       creator_id: user.id,
       menu_type: Erp::Menus::Menu::MENU_SIDEBAR
     )
+      father216.children.create(
+        name: "Máy In",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father216.children.create(
+        name: "Máy In Phun",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father216.children.create(
+        name: "Mực In",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father216.children.create(
+        name: "Máy Scan",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father216.children.create(
+        name: "Máy Vẽ Kỹ Thuật",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+    # Màn Hình Máy Tính
+    father217 = father21.children.create(
+      name: "Màn Hình Máy Tính",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+    )
+    # Phụ Kiện & Sản Phẩm Khác
+    father218 = father21.children.create(
+      name: "Phụ Kiện & Sản Phẩm Khác",
+      creator_id: user.id,
+      menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+    )
+      father218.children.create(
+        name: "Máy Tính Tiền - RPOS",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Module Quang SFP",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Bộ Sạc Nguồn",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Pin Nguồn",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Bàn Phím - Chuột",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Ổ Đĩa Cứng",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )      
+      father218.children.create(
+        name: "Loa - Tai Nghe",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
+      father218.children.create(
+        name: "Balo Laptop",
+        creator_id: user.id,
+        menu_type: Erp::Menus::Menu::MENU_SIDEBAR
+      )
   # MÁY TÍNH
   father22 = father2.children.create(
     name: "Máy Tính",
