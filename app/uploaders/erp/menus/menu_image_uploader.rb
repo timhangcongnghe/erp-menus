@@ -35,6 +35,11 @@ module Erp
       # version :thumb do
       #   process resize_to_fit: [50, 50]
       # end
+      
+      version :icon do
+				process :resize_to_fill => [20, 20]
+			end
+      
       version :small do
 				process :resize_to_fill => [120, 120]
 			end

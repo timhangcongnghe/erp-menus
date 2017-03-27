@@ -6,6 +6,7 @@
                     <div class="portlet-body form">
                         <div class="row">
                             <div class="col-md-6">
+                                <h4>Hình ảnh 1 (Trái)</h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.image_url_1,
                                     name: 'menu[image_url_1]',
@@ -14,6 +15,7 @@
                                 }) %>
                             </div>
                             <div class="col-md-6">
+                                <h4>Hình ảnh 2 (Phải)</h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.image_url_2,
                                     name: 'menu[image_url_2]',
@@ -22,6 +24,18 @@
                                 }) %>
                             </div>
                         </div>
+                        <%= erp_form_control("text", {
+                            name: 'menu[image_menu_link_1]',
+                            value: menu.image_menu_link_1,                   
+                            label: t('.image_menu_link_1'),
+                            placeholder: t('.enter_image_menu_link_1')
+                        }) %>
+                        <%= erp_form_control("text", {
+                            name: 'menu[image_menu_link_2]',
+                            value: menu.image_menu_link_2,                   
+                            label: t('.image_menu_link_2'),
+                            placeholder: t('.enter_image_menu_link_2')
+                        }) %>
                         <%= erp_form_control("text", {
                             name: 'menu[name]',
                             value: menu.name,                   
@@ -64,18 +78,17 @@
             <div class="col-md-6">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
-                        <%= erp_form_control("text", {
-                            name: 'menu[image_menu_link_1]',
-                            value: menu.image_menu_link_1,                   
-                            label: t('.image_menu_link_1'),
-                            placeholder: t('.enter_image_menu_link_1')
-                        }) %>
-                        <%= erp_form_control("text", {
-                            name: 'menu[image_menu_link_2]',
-                            value: menu.image_menu_link_2,                   
-                            label: t('.image_menu_link_2'),
-                            placeholder: t('.enter_image_menu_link_2')
-                        }) %> 
+                        <div class="row">                            
+                            <div class="col-md-6">
+                                <h4>Icon cho menu</h4>
+                                <%= erp_form_control('image', {
+                                    img_src: menu.menu_icon,
+                                    name: 'menu[menu_icon]',
+                                    width: 100,
+                                    height: 100
+                                }) %>
+                            </div>
+                        </div>
                         <%= erp_form_control("dataselect", {
                             name: 'menu[brand_group_id]',
                             value: menu.brand_group_id,
