@@ -14,16 +14,6 @@
                     <%= t('.parent_name') %>
                 </th>
             <% end %>
-            <% if get_columns(params).include?("menu_type") %>
-                <th>
-                    <%= t('.menu_type') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("categories_name") %>
-                <th>
-                    <%= t('.categories_name') %>
-                </th>
-            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -57,18 +47,6 @@
                 <% if get_columns(params).include?("parent_name") %>
                     <td>
                         <%= menu.parent.name if menu.parent.present? %>
-                    </td>
-                <% end %>
-                <% if get_columns(params).include?("menu_type") %>
-                    <td>
-                        <%= menu.menu_type %>
-                    </td>
-                <% end %>
-                <% if get_columns(params).include?("categories_name") %>
-                    <td>
-                        <% menu.categories.each do |cat| %>
-                            <%= cat.name %>
-                        <% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>

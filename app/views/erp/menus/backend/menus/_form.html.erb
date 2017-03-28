@@ -58,14 +58,6 @@
                                 input_selector: 'input[name="menu[name]"]'
                             }
                         }) %>
-                        <%= erp_form_control('select', {
-                            label: t('.menu_type'),
-                            name: 'menu[menu_type]',
-                            value: menu.menu_type,
-                            options: Erp::Menus::Menu.get_menu_type_options(),
-                            required: true,
-                            errors: menu.errors.full_messages_for(:menu_type)
-                        }) %>
                         <%= erp_form_control("textarea", {
                             name: 'menu[description]',
                             value: menu.description,                   
@@ -108,6 +100,14 @@
                                 title: t('.edit_brand_group'),
                                 container_selector: '.edit_brand_group',
                             }
+                        }) %>
+                        <%= erp_form_control('checkbox', {
+                            name: 'menu[is_hot]',
+                            id: 'menu_is_hot',
+                            value: menu.is_hot,
+                            not_selected_value: 'false',
+                            label: t('.menu_is_hot'),
+                            options: [{value: 'true', text: t('.is_hot')}]
                         }) %>
                         <div class="row">
                             <div class="col-sm-6">

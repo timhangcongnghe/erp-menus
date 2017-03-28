@@ -1,11 +1,11 @@
 module Erp::Menus
   class Menu < ApplicationRecord
-		include Erp::CustomOrder
-		
+		include Erp::CustomOrder		
 		mount_uploader :image_url_1, Erp::Menus::MenuImageUploader
 		mount_uploader :image_url_2, Erp::Menus::MenuImageUploader
 		mount_uploader :menu_icon, Erp::Menus::MenuImageUploader
-    validates :name, :menu_type, :presence => true
+		
+    validates :name, :presence => true
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :parent, class_name: "Erp::Menus::Menu", optional: true
     has_many :children, class_name: "Erp::Menus::Menu", foreign_key: "parent_id"
@@ -26,10 +26,6 @@ module Erp::Menus
 			end
 		end
     
-    # class const
-    MENU_SIDEBAR = 'menu_sidebar'
-    MENU_HOT = 'menu_hot'
-    
     STYLE_COLOR_1 = 'supper1'
     STYLE_COLOR_2 = 'supper2'
     STYLE_COLOR_3 = 'supper3'
@@ -45,30 +41,21 @@ module Erp::Menus
       ]
     end
     
-    def self.get_menu_type_options()
-      [
-        {text: I18n.t('erp_menus_menus.sidebar'), value: MENU_SIDEBAR},
-        {text: I18n.t('erp_menus_menus.menu_hot'), value: MENU_HOT}
-      ]
-    end
-    
     def self.get_active
-			self.where(archived: false)
+			self.where(archived: false).order("custom_order ASC")
 		end
     
-    def self.get_menu_sidebar
-			self.get_active.where(menu_type: MENU_SIDEBAR)
-					.where(parent_id: nil).first.children
+    def self.is_hot
+			self.where(is_hot: true)
 		end
     
-    def self.get_menu_search
-			self.get_active.where(menu_type: MENU_SIDEBAR)
-					.where(parent_id: nil).first.children
+    def self.get_hot_menus
+			self.get_active.where(is_hot: true)
+			               .where(parent_id: nil)
 		end
     
-    def self.get_menu_hot
-			self.get_active.where(menu_type: MENU_HOT)
-					.where(parent_id: nil).first.children
+    def self.get_menus
+			self.get_active.where(parent_id: nil)
 		end
     
     # Filters

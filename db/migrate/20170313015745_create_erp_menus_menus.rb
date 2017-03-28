@@ -3,7 +3,6 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
     create_table :erp_menus_menus do |t|
       t.string :name
       t.integer :parent_id
-      t.string :menu_type
       t.string :style_icon
       t.string :style_color
       t.string :image_url_1
@@ -14,6 +13,7 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
       t.text :description
       t.text :meta_keywords
       t.text :meta_description
+      t.boolean :is_hot, default: false
       t.boolean :archived, default: false
       t.references :creator, index: true, references: :erp_users
       t.references :brand_group, index: true, references: :erp_products_brand_groups

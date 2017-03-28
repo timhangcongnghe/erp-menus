@@ -1,8 +1,5 @@
 vi:
   erp_menus_menus:
-    top_bar: "Menu TopBar"
-    sidebar: "Menu Sidebar"
-    menu_hot: "Menu Hot"
     dark_cyan: "Dark Cyan"
     outrageous_orange: "Outrageous Orange"
     fruit_salad: "Fruit Salad"
@@ -54,7 +51,8 @@ vi:
             choose_parent_menu: "Chọn menu cha"
             add_category: "Thêm chuyên mục"
             create_category: "Tạo chuyên mục"
-            menu_type: "Loại menu"
+            is_hot: "Đây là Menu Hot"
+            menu_is_hot: "Menu HOT"
             created_menu: "Tạo menu"
             related_categories: "Chuyên mục liên quan"
             choose_related_categories: "Chọn chuyên mục liên quan"
