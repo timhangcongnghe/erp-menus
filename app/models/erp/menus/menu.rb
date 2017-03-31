@@ -229,5 +229,17 @@ module Erp::Menus
 			
 			level
 		end
+    
+    # get self parent menus
+    def self_and_parent_menus
+			arr = [self]
+			father = self.parent
+			while father.present?
+				arr << father
+				father = father.parent
+			end
+			
+			return arr.reverse
+		end
   end
 end
