@@ -77,6 +77,9 @@ vi:
             choose_brand_group: "Chọn nhóm thương hiệu"
             brand_group: "Nhóm thương hiệu"
             help_brand_group: "Chọn nhóm thương hiệu để phục vục việc tìm kiếm"
+            help_brand: "Chọn thương hiệu cho menu (Menu tách biệt theo nhóm)"
+            choose_brand: "Chọn thương hiệu"
+            brand: "Thương hiệu"
   activerecord:
     errors:
       models:
