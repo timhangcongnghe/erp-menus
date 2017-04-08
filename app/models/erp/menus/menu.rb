@@ -233,7 +233,7 @@ module Erp::Menus
 				parent = parent.parent
 			end
 
-			self.update_column(level)
+			self.update_column(:level, level)
 		end
 
     # get self parent menus
