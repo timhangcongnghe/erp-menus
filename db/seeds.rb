@@ -290,8 +290,8 @@ father8 = Erp::Menus::Menu.create(
   name: "Thông Tin Khuyến Mãi",
   creator_id: user.id
 )
-# DỊCH VỤ SỬA CHỬA
+# DỊCH VỤ SỬA CHỮA
 father9 = Erp::Menus::Menu.create(
-  name: "Dịch Vụ Sửa Chửa",
+  name: "Dịch Vụ Sửa Chữa",
   creator_id: user.id
 )
