@@ -82,7 +82,11 @@ module Erp::Menus
 							# show archived items
 							show_archived = true
 						else
-							or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
+							if cond[1]["value"] = 'nil'
+								or_conds << "#{cond[1]["name"]} IS NULL"
+							else
+								or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
+							end
 						end
 					end
 					and_conds << '('+or_conds.join(' OR ')+')' if !or_conds.empty?
