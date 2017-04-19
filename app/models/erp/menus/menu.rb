@@ -251,5 +251,17 @@ module Erp::Menus
 
 			return arr.reverse
 		end
+
+    # Get child menus array
+    def get_children_array
+			arr = []
+			self.children.each do |child_1|
+				arr << {menu: child_1, class: 'parent'}
+				child_1.children.each do |child_2|
+					arr << {menu: child_2, class: 'child'}
+				end
+			end
+			arr
+		end
   end
 end
