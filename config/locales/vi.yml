@@ -80,6 +80,12 @@ vi:
             help_brand: "Chọn thương hiệu cho menu (Menu tách biệt theo nhóm)"
             choose_brand: "Chọn thương hiệu"
             brand: "Thương hiệu"
+            menu_icon: "Icon cho menu"
+            image_menu: "Hình ảnh cho menu"
+            image_menu_title: "Tiêu đề cho hình ảnh menu..."
+            enter_image_menu_title: "Nhập tiêu đề cho hình ảnh menu..."
+            image_menu_link: "Link cho hình ảnh menu chính"
+            enter_image_menu_link: "Nhập link cho hình ảnh menu..."
   activerecord:
     errors:
       models:
