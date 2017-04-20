@@ -52,6 +52,14 @@ module Erp
 			version :image_menu do
 				process :resize_to_fill => [282, 387]
 			end
+			
+			# menu hot
+			version :menu_hot_image_1 do
+				process :resize_to_fill => [191, 283]
+			end
+			version :menu_hot_image_2 do
+				process :resize_to_fill => [783, 283]
+			end
     
       # Add a white list of extensions which are allowed to be uploaded.
       # For images you might use something like this:
