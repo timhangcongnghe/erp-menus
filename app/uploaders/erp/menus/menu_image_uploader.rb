@@ -55,10 +55,10 @@ module Erp
 			
 			# menu hot
 			version :menu_hot_image_1 do
-				process :resize_to_fill => [234, 283]
+				process :resize_to_fill => [234, 270]
 			end
 			version :menu_hot_image_2 do
-				process :resize_to_fill => [783, 283]
+				process :resize_to_fill => [783, 270]
 			end
     
       # Add a white list of extensions which are allowed to be uploaded.
