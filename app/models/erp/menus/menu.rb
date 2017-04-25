@@ -208,6 +208,16 @@ module Erp::Menus
 			def get_products_for_categories(params)
 				records = Erp::Products::Product.get_active
 													.where(category_id: self.get_all_related_category_ids)
+
+				# filter by brand if menu hass brand
+				if self.brand_id.present?
+					records = records.where(brand_id: self.brand_id)
+				end
+
+				if params[:brand_ids].present?
+					records = records.where(brand_id: params[:brand_ids])
+				end
+
 				return records
 			end
 
@@ -242,7 +252,7 @@ module Erp::Menus
 		end
 
     # get self parent menus
-    def self_and_parent_menus
+    def self_and_parent_menus(options={})
 			arr = [self]
 			father = self.parent
 			while father.present?
@@ -263,6 +273,11 @@ module Erp::Menus
 				end
 			end
 			arr
+		end
+
+    # get all brands for menu
+    def brands
+			Erp::Products::Brand.where(id: self.get_products_for_categories({}).select(:brand_id).where.not(brand_id: nil)).order(:name)
 		end
   end
 end
