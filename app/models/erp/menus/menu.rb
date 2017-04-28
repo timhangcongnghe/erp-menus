@@ -217,6 +217,18 @@ module Erp::Menus
 				if params[:brand_ids].present?
 					records = records.where(brand_id: params[:brand_ids])
 				end
+				
+				if params[:is_business_choises].present?
+					records = records.where(is_business_choices: true)
+				end
+				
+				if params[:is_deal].present?
+					records = records.where(is_deal: true)
+				end
+				
+				if params[:is_bestseller].present?
+					records = records.where(is_bestseller: true)
+				end
 
 				return records
 			end
