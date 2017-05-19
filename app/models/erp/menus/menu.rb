@@ -214,28 +214,6 @@ module Erp::Menus
 					records = records.where(brand_id: self.brand_id)
 				end
 
-				if params[:brand_ids].present?
-					records = records.where(brand_id: params[:brand_ids])
-				end
-
-				if params[:is_business_choises].present?
-					records = records.where(is_business_choices: true)
-				end
-
-				if params[:is_deal].present?
-					records = records.where(is_deal: true)
-				end
-
-				if params[:is_bestseller].present?
-					records = records.where(is_bestseller: true)
-				end
-
-				if params[:sort_by].present?
-					records = records.order(params[:sort_by].gsub('_', ' '))
-				else
-					records = records.order("created_at DESC")
-				end
-
 				return records
 			end
 
@@ -296,6 +274,15 @@ module Erp::Menus
     # get all brands for menu
     def brands
 			Erp::Products::Brand.where(id: self.get_products_for_categories({}).select(:brand_id).where.not(brand_id: nil)).order(:name)
+		end
+
+    # select result
+    def self.select2(params=nil, limit=40)
+			query = self.order('name asc')
+			query = query.where("LOWER(name) LIKE ?", "%#{params[:q].strip.downcase}%") if params[:q].present?
+			query = query.limit(limit)
+
+			return query.map{|menu| {value: menu.id, text: menu.name}}
 		end
   end
 end
