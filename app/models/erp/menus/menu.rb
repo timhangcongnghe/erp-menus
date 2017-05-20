@@ -302,15 +302,30 @@ module Erp::Menus
 			Erp::Products::Brand.where(id: self.get_products_for_categories({}).select(:brand_id).where.not(brand_id: nil)).order(:name)
 		end
 
+    # search by keyword
+    def self.filter_by_keyword(kw)
+			query = self.where("1=1")
+			# single keyword
+      if kw.present?
+				keyword = kw.strip.downcase
+				keyword.split(' ').each do |q|
+					q = q.strip
+					query = query.where('LOWER(cache_search) LIKE ?', '%'+q+'%')
+				end
+			end
+
+      return query
+		end
+
     # select result
     def self.select2(params=nil, limit=40)
 			query = self.order('name asc')
-			query = query.where("LOWER(name) LIKE ?", "%#{params[:q].strip.downcase}%") if params[:q].present?
+			query = query.filter_by_keyword(params[:q]) if params[:q].present?
 			query = query.limit(limit)
 
 			return query.map{|menu| {value: menu.id, text: menu.name}}
 		end
-    
+
     # Update cache search for menus
     after_save :update_cache_search
 
