@@ -243,6 +243,13 @@ module Erp::Menus
 				return records
 			end
 
+			def get_products
+				records = Erp::Products::Product.get_active
+													.where(category_id: self.get_all_related_category_ids)
+
+				return records
+			end
+
 			def get_all_related_category_ids
 				category_ids = []
 				menu_ids = self.get_self_and_children_ids
