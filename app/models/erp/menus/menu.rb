@@ -143,7 +143,7 @@ module Erp::Menus
         query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
       end
 
-      query = query.limit(8).map{|menu| {value: menu.id, text: menu.name} }
+      query = query.limit(8).map{|menu| {value: menu.id, text: (menu.parent_name.empty? ? '' : "#{menu.parent_name} / ") + menu.name} }
     end
 
     def archive
