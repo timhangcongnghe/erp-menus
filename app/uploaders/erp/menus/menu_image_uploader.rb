@@ -60,7 +60,9 @@ module Erp
 			version :menu_hot_image_2 do
 				process :resize_to_fill => [749, 270]
 			end
-
+			version :menu_hot_image_category do
+				process :resize_to_fill => [870, 313]
+			end
       # Add a white list of extensions which are allowed to be uploaded.
       # For images you might use something like this:
       # def extension_whitelist
