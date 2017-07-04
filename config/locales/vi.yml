@@ -86,6 +86,10 @@ vi:
             enter_image_menu_title: "Nhập tiêu đề cho hình ảnh menu..."
             image_menu_link: "Link cho hình ảnh menu chính"
             enter_image_menu_link: "Nhập link cho hình ảnh menu..."
+            menu_is_show_detail: "Chi tiết của sản phẩm"
+            is_show_detail: Hiển thị chi tiết
+            number_per_page: "Số sản phẩm"
+            help_number_per_page: "Số sản phẩm hiển thị trên 1 trang"
   activerecord:
     errors:
       models:

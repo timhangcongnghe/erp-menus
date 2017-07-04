@@ -36,6 +36,38 @@
                             label: t('.image_menu_link_2'),
                             placeholder: t('.enter_image_menu_link_2')
                         }) %>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[is_hot]',
+                                    id: 'menu_is_hot',
+                                    value: menu.is_hot,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_is_hot'),
+                                    options: [{value: 'true', text: t('.is_hot')}]
+                                }) %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[is_show_detail]',
+                                    id: 'menu_is_show_detail',
+                                    value: menu.is_show_detail,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_is_show_detail'),
+                                    options: [{value: 'true', text: t('.is_show_detail')}]
+                                }) %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= erp_form_control("text", {
+                                    name: 'menu[number_per_page]',
+                                    value: menu.number_per_page,                   
+                                    label: t('.number_per_page'),
+                                    help: t('.help_number_per_page'),
+                                    required: true,
+                                    errors: menu.errors.full_messages_for(:number_per_page)
+                                }) %>
+                            </div>
+                        </div>
                         <%= erp_form_control("text", {
                             name: 'menu[name]',
                             value: menu.name,                   
@@ -147,15 +179,7 @@
                                 title: t('.edit_brand_group'),
                                 container_selector: '.edit_brand_group',
                             }
-                        }) %>
-                        <%= erp_form_control('checkbox', {
-                            name: 'menu[is_hot]',
-                            id: 'menu_is_hot',
-                            value: menu.is_hot,
-                            not_selected_value: 'false',
-                            label: t('.menu_is_hot'),
-                            options: [{value: 'true', text: t('.is_hot')}]
-                        }) %>
+                        }) %>                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <%= erp_form_control("text", {
