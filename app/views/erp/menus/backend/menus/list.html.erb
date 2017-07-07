@@ -42,7 +42,9 @@
                     <%= erp_datalist_check_row(id: menu.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                    <td><%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %></td>
+                    <td>
+                        <%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>                        
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("parent_name") %>
                     <td>
@@ -59,7 +61,11 @@
                         <%= erp_component('label/success', {
                             text: t('active')
                         }) %>
-                    <% end %> 
+                    <% end %>
+                    <% if menu.meta_keywords.present? && menu.meta_description.present? %>
+                        <br><br>
+                        <%= t('.add_seo') %>
+                    <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
