@@ -58,16 +58,24 @@
                                 }) %>
                             </div>
                             <div class="col-md-4">
-                                <%= erp_form_control("text", {
-                                    name: 'menu[number_per_page]',
-                                    value: menu.number_per_page,                   
-                                    label: t('.number_per_page'),
-                                    help: t('.help_number_per_page'),
-                                    required: true,
-                                    errors: menu.errors.full_messages_for(:number_per_page)
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[use_filter]',
+                                    id: 'menu_use_filter',
+                                    value: menu.use_filter,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_use_filter'),
+                                    options: [{value: 'true', text: t('.use_filter')}]
                                 }) %>
                             </div>
                         </div>
+                        <%= erp_form_control("text", {
+                            name: 'menu[number_per_page]',
+                            value: menu.number_per_page,                   
+                            label: t('.number_per_page'),
+                            help: t('.help_number_per_page'),
+                            required: true,
+                            errors: menu.errors.full_messages_for(:number_per_page)
+                        }) %>
                         <%= erp_form_control("text", {
                             name: 'menu[name]',
                             value: menu.name,                   

@@ -91,6 +91,8 @@ vi:
             is_show_detail: Hiển thị chi tiết
             number_per_page: "Số sản phẩm"
             help_number_per_page: "Số sản phẩm hiển thị trên 1 trang"
+            menu_use_filter: "Hiển thị bộ lọc"
+            use_filter: "Hiển thị"
   activerecord:
     errors:
       models:

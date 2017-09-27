@@ -58,6 +58,7 @@ module Erp
             end
           else
             render :edit
+            puts @menu.errors.to_json
           end
         end
 
@@ -193,7 +194,7 @@ module Erp
 
           # Only allow a trusted parameter "white list" through.
           def menu_params
-            params.fetch(:menu, {}).permit(:image_url_1, :image_url_2, :image_menu, :image_menu_title, :image_menu_link, :name, :description, :parent_id, :is_hot, :style_icon,
+            params.fetch(:menu, {}).permit(:image_url_1, :image_url_2, :image_menu, :image_menu_title, :image_menu_link, :name, :description, :parent_id, :use_filter, :is_hot, :style_icon,
                                            :meta_keywords, :meta_description, :is_show_detail, :number_per_page, :style_color, :brand_id, :image_menu_link_1, :image_menu_link_2, :menu_icon, :brand_group_id, category_ids: [],
                                            :related_menus_attributes => [:id, :menu_id, :_destroy])
           end

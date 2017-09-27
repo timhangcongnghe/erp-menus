@@ -15,8 +15,8 @@ module Erp::Menus
 
     if Erp::Core.available?("products")
 			has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
-			belongs_to :brand_group, class_name: "Erp::Products::BrandGroup"
-			belongs_to :brand, class_name: "Erp::Products::Brand", foreign_key: "brand_id"
+			belongs_to :brand_group, class_name: "Erp::Products::BrandGroup", optional: true
+			belongs_to :brand, class_name: "Erp::Products::Brand", foreign_key: "brand_id", optional: true
 
 			# display brand group name
 			def brand_group_name
@@ -322,6 +322,12 @@ module Erp::Menus
 			end
 
       return query
+		end
+        
+    def menu_get_properties_array
+			if (self.categories.count > 0)
+				self.categories.first.category_get_properties_array
+			end
 		end
 
     # select result
