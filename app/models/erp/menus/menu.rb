@@ -221,6 +221,19 @@ module Erp::Menus
 				if params[:brand_id].present?
 					records = records.where(brand_id: params[:brand_id])
 				end
+				
+				if params[:property_value_ids].present?          
+          records = records.joins(:products_values).where(erp_products_products_values: {properties_value_id: params[:property_value_ids]})
+        end
+				
+				if params[:price_list].present?
+          ors = []
+          params[:price_list].each do |str|
+            ors << "erp_products_products.price >= #{str.split('-')[0]} AND
+                   erp_products_products.price <= #{str.split('-')[1]}"                                                                              
+          end
+          records = records.where(ors.join(" OR "))
+        end
 
 				if params[:is_business_choises].present?
 					records = records.where(is_business_choices: true)
@@ -238,7 +251,7 @@ module Erp::Menus
 					records = records.order(params[:sort_by].gsub('_', ' '))
 				else
 					records = records.order("created_at DESC")
-				end
+				end				
 
 				return records
 			end
