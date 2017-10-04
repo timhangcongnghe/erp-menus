@@ -222,8 +222,11 @@ module Erp::Menus
 					records = records.where(brand_id: params[:brand_id])
 				end
 				
-				if params[:property_value_ids].present?          
-          records = records.joins(:products_values).where(erp_products_products_values: {properties_value_id: params[:property_value_ids]})
+				if params[:property_value_ids].present?
+					params.to_unsafe_hash[:property_value_ids].each do |row|
+						records = records.where(id: Erp::Products::ProductsValue.select(:product_id)
+														  .where(properties_value_id: row[1]))
+					end
         end
 				
 				if params[:price_list].present?
