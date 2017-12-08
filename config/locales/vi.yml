@@ -37,7 +37,7 @@ vi:
             delete: "Xóa menu"
           list:
             name: "Tên"
-            add_seo: "Đã thêm SEO cho menu"
+            seo_success: "Đã SEO với"
             no_matching_records_found: "Danh sách menu hiện tại đang trống."
           new:
             menus: "Danh sách menu"

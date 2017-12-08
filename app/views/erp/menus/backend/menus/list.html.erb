@@ -63,8 +63,7 @@
                         }) %>
                     <% end %>
                     <% if menu.meta_keywords.present? && menu.meta_description.present? %>
-                        <br><br>
-                        <%= t('.add_seo') %>
+                        <br><span class="label label-sm label-danger"><%= t('.seo_success') %> <%= menu.count_keywords_arr %> từ khóa</span>
                     <% end %>
                 </td>
                 <% end %>

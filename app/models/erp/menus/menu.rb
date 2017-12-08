@@ -324,6 +324,11 @@ module Erp::Menus
     def brands
 			Erp::Products::Brand.where(id: self.get_products_for_categories({}).select(:brand_id).where.not(brand_id: nil)).order(:name)
 		end
+    
+    def count_keywords_arr
+      arr = self.meta_keywords.split(', ') if self.meta_keywords.present?
+      return arr.count
+    end    
 
     # search by keyword
     def self.filter_by_keyword(kw)
