@@ -209,6 +209,10 @@ module Erp::Menus
 				records = Erp::Products::Product.get_active
 													.where(category_id: self.get_all_related_category_ids)
 
+				if params[:exclude_product_id].present?
+					records = records.where.not(id: params[:exclude_product_id])
+				end
+
 				# filter by brand if menu hass brand
 				if self.brand_id.present?
 					records = records.where(brand_id: self.brand_id)
