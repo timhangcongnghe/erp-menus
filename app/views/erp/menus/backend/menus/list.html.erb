@@ -62,8 +62,17 @@
                             text: t('active')
                         }) %>
                     <% end %>
+                    <% if menu.is_hot == true %>
+                        <br><span class="label label-sm label-warning"><%= t('.is_hot') %></span>
+                    <% end %>
+                    <% if menu.is_show_detail == true %>
+                        <br><span class="label label-sm label-warning"><%= t('.is_show_detail') %></span>
+                    <% end %>
+                    <% if menu.use_filter == true %>
+                        <br><span class="label label-sm label-warning"><%= t('.use_filter') %></span>
+                    <% end %>
                     <% if menu.meta_keywords.present? && menu.meta_description.present? %>
-                        <br><span class="label label-sm label-danger"><%= t('.seo_success') %> <%= menu.count_keywords_arr %> từ khóa</span>
+                        <br><span class="label label-sm label-orange"><%= t('.seo_success') %> <%= menu.count_keywords_arr %> từ khóa</span>
                     <% end %>
                 </td>
                 <% end %>
