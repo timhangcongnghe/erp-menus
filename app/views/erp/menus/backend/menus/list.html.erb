@@ -74,6 +74,9 @@
                     <% if menu.meta_keywords.present? && menu.meta_description.present? %>
                         <br><span class="label label-sm label-orange"><%= t('.seo_success') %> <%= menu.count_keywords_arr %> từ khóa</span>
                     <% end %>
+                    <% if menu.number_per_page.present? %>
+                        <br><span class="label label-sm label-success">Hiển thị: <%= menu.number_per_page %> sản phẩm</span>
+                    <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
@@ -147,6 +150,7 @@
         <% end %>
     </tbody>
 </table>
+
 <% if @menus.empty? %>
     <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
 <% end %>

@@ -35,6 +35,9 @@ vi:
             parent_menu: "Menu cha"
             create: "Thêm menu"
             delete: "Xóa menu"
+            is_hot: "Hiển thị ngoài trang chủ"
+            is_show_detail: "Hiển thị chi tiết"
+            use_filter: "Hiển thị bộ lọc"
           list:
             name: "Tên"
             seo_success: "Đã SEO với"
