@@ -68,14 +68,28 @@
                                 }) %>
                             </div>
                         </div>
-                        <%= erp_form_control("text", {
-                            name: 'menu[number_per_page]',
-                            value: menu.number_per_page,                   
-                            label: t('.number_per_page'),
-                            help: t('.help_number_per_page'),
-                            required: true,
-                            errors: menu.errors.full_messages_for(:number_per_page)
-                        }) %>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'menu[number_per_page]',
+                                    value: menu.number_per_page,                   
+                                    label: t('.number_per_page'),
+                                    help: t('.help_number_per_page'),
+                                    required: true,
+                                    errors: menu.errors.full_messages_for(:number_per_page)
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'menu[limit_product_name]',
+                                    value: menu.limit_product_name,                   
+                                    label: t('.limit_product_name'),
+                                    help: t('.help_limit_product_name'),
+                                    required: true,
+                                    errors: menu.errors.full_messages_for(:limit_product_name)
+                                }) %>
+                            </div>
+                        </div>
                         <%= erp_form_control("text", {
                             name: 'menu[name]',
                             value: menu.name,                   

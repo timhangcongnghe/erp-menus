@@ -77,6 +77,9 @@
                     <% if menu.number_per_page.present? %>
                         <br><span class="label label-sm label-success">Hiển thị: <%= menu.number_per_page %> sản phẩm</span>
                     <% end %>
+                    <% if menu.limit_product_name.present? %>
+                        <br><span class="label label-sm label-success">Hiển thị: <%= menu.limit_product_name %> ký tự</span>
+                    <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>

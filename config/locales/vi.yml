@@ -97,6 +97,8 @@ vi:
             is_show_detail: Hiển thị chi tiết
             number_per_page: "Số sản phẩm"
             help_number_per_page: "Số sản phẩm hiển thị trên 1 trang"
+            limit_product_name: "Số ký tự sản phẩm"
+            help_limit_product_name: "Số ký tự hiển thị trên tên sản phẩm"
             menu_use_filter: "Hiển thị bộ lọc"
             use_filter: "Hiển thị"
   activerecord:
