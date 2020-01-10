@@ -32,6 +32,12 @@ module Erp::Menus
 				brand.present? ? brand.name : ''
 			end
 		end
+    
+    after_create :create_alias
+    def create_alias
+			name = self.name
+			self.update_column(:alias, name.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
+		end
 
     STYLE_COLOR_1 = 'supper1'
     STYLE_COLOR_2 = 'supper2'
