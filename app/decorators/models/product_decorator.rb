@@ -5,12 +5,14 @@ Erp::Products::Product.class_eval do
 	end
 
 	def find_menu
-		all_menus = self.find_menus
-		if self.brand_id.present?
-			menus = all_menus.where(brand_id: self.brand_id)
+		if !self.find_menus.nil?
+			all_menus = self.find_menus
+			if self.brand_id.present?
+				menus = all_menus.where(brand_id: self.brand_id)
+			end
+			menus = all_menus if menus.empty?
+	
+			menus.last
 		end
-		menus = all_menus if menus.empty?
-
-		menus.last
 	end
 end
