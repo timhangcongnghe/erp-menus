@@ -36,7 +36,7 @@ module Erp::Menus
     after_create :create_alias
     def create_alias
 			name = self.name
-			self.update_column(:alias, name.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
+			self.update_column(:alias, name.to_ascii.downcase.to_s.gsub(/[^0-9a-z \/]/i, '').gsub(/[ \/]+/i, '-').strip)
 		end
 
     STYLE_COLOR_1 = 'supper1'
@@ -54,21 +54,9 @@ module Erp::Menus
       ]
     end
 
-    def self.get_active
-			self.where(archived: false).order("custom_order ASC")
-		end
-
-    def self.is_hot
-			self.where(is_hot: true)
-		end
-
     def self.get_hot_menus
 			self.get_active.where(is_hot: true)
 			               .where(parent_id: nil)
-		end
-
-    def self.get_menus
-			self.get_active.where(parent_id: nil)
 		end
 
     # Filters
@@ -308,30 +296,6 @@ module Erp::Menus
 			end
 
 			self.update_column(:level, level)
-		end
-
-    # get self parent menus
-    def self_and_parent_menus(options={})
-			arr = [self]
-			father = self.parent
-			while father.present?
-				arr << father
-				father = father.parent
-			end
-
-			return arr.reverse
-		end
-
-    # Get child menus array
-    def get_children_array
-			arr = []
-			self.children.get_active.each do |child_1|
-				arr << {menu: child_1, class: 'parent'}
-				child_1.children.get_active.each do |child_2|
-					arr << {menu: child_2, class: 'child'}
-				end
-			end
-			arr
 		end
 
     # get all brands for menu
