@@ -6,38 +6,44 @@
                     <div class="portlet-body form">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4>Hình ảnh 1 (Trái)</h4>
+                                <h4 class="text-center">Cat Home Left 234x270</h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.image_url_1,
                                     name: 'menu[image_url_1]',
-                                    width: 150,
-                                    height: 150
+                                    width: 100,
+                                    height: 100
                                 }) %>
                             </div>
                             <div class="col-md-6">
-                                <h4>Hình ảnh 2 (Phải)</h4>
+                                <h4 class="text-center">Cat Home Right 749x270</h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.image_url_2,
                                     name: 'menu[image_url_2]',
-                                    width: 150,
-                                    height: 150
+                                    width: 100,
+                                    height: 100
                                 }) %>
                             </div>
                         </div>
-                        <%= erp_form_control("text", {
-                            name: 'menu[image_menu_link_1]',
-                            value: menu.image_menu_link_1,                   
-                            label: t('.image_menu_link_1'),
-                            placeholder: t('.enter_image_menu_link_1')
-                        }) %>
-                        <%= erp_form_control("text", {
-                            name: 'menu[image_menu_link_2]',
-                            value: menu.image_menu_link_2,                   
-                            label: t('.image_menu_link_2'),
-                            placeholder: t('.enter_image_menu_link_2')
-                        }) %>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'menu[image_menu_link_1]',
+                                    value: menu.image_menu_link_1,                   
+                                    label: t('.image_menu_link_1'),
+                                    placeholder: t('.enter_image_menu_link_1')
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'menu[image_menu_link_2]',
+                                    value: menu.image_menu_link_2,                   
+                                    label: t('.image_menu_link_2'),
+                                    placeholder: t('.enter_image_menu_link_2')
+                                }) %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <%= erp_form_control('checkbox', {
                                     name: 'menu[is_hot]',
                                     id: 'menu_is_hot',
@@ -47,17 +53,7 @@
                                     options: [{value: 'true', text: t('.is_hot')}]
                                 }) %>
                             </div>
-                            <div class="col-md-4">
-                                <%= erp_form_control('checkbox', {
-                                    name: 'menu[is_show_detail]',
-                                    id: 'menu_is_show_detail',
-                                    value: menu.is_show_detail,
-                                    not_selected_value: 'false',
-                                    label: t('.menu_is_show_detail'),
-                                    options: [{value: 'true', text: t('.is_show_detail')}]
-                                }) %>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <%= erp_form_control('checkbox', {
                                     name: 'menu[use_filter]',
                                     id: 'menu_use_filter',
@@ -67,29 +63,7 @@
                                     options: [{value: 'true', text: t('.use_filter')}]
                                 }) %>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <%= erp_form_control("text", {
-                                    name: 'menu[number_per_page]',
-                                    value: menu.number_per_page,                   
-                                    label: t('.number_per_page'),
-                                    help: t('.help_number_per_page'),
-                                    required: true,
-                                    errors: menu.errors.full_messages_for(:number_per_page)
-                                }) %>
-                            </div>
-                            <div class="col-md-6">
-                                <%= erp_form_control("text", {
-                                    name: 'menu[limit_product_name]',
-                                    value: menu.limit_product_name,                   
-                                    label: t('.limit_product_name'),
-                                    help: t('.help_limit_product_name'),
-                                    required: true,
-                                    errors: menu.errors.full_messages_for(:limit_product_name)
-                                }) %>
-                            </div>
-                        </div>
+                        </div>                        
                         <%= erp_form_control("text", {
                             name: 'menu[name]',
                             value: menu.name,                   
@@ -112,12 +86,6 @@
                                 input_selector: 'input[name="menu[name]"]'
                             }
                         }) %>
-                        <%= erp_form_control("textarea", {
-                            name: 'menu[description]',
-                            value: menu.description,                   
-                            label: t('.description'),
-                            placeholder: t('.enter_description')
-                        }) %>                                                           
                     </div>
                 </div>
             </div>
@@ -126,7 +94,7 @@
                     <div class="portlet-body form">
                         <div class="row">                            
                             <div class="col-md-6">
-                                <h4><%= t('.menu_icon') %></h4>
+                                <h4 class="text-center"><%= t('.menu_icon') %></h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.menu_icon,
                                     name: 'menu[menu_icon]',
@@ -135,12 +103,12 @@
                                 }) %>
                             </div>
                             <div class="col-md-6">
-                                <h4><%= t('.image_menu') %></h4>
+                                <h4 class="text-center"><%= t('.image_menu') %></h4>
                                 <%= erp_form_control('image', {
                                     img_src: menu.image_menu,
                                     name: 'menu[image_menu]',
-                                    width: 150,
-                                    height: 150
+                                    width: 100,
+                                    height: 100
                                 }) %>
                             </div>
                         </div>
@@ -168,40 +136,8 @@
                             text: menu.brand_name,
                             placeholder: t('.choose_brand'),
                             label: t('.brand'),
-                            help: t('.help_brand'),
-                            url: erp_products.dataselect_backend_brands_path(format: 'json'),
-                            create: {
-                                url: erp_products.new_backend_brand_path,
-                                title: t('.create_brand'),
-                                container_selector: '.new_brand',
-                                input_selector: 'input[name="brand[name]"]'
-                            },
-                            edit: {
-                                url: erp_products.edit_backend_brand_path(id: ':value'),
-                                title: t('.edit_brand'),
-                                container_selector: '.edit_brand',
-                            }
+                            url: erp_products.dataselect_backend_brands_path(format: 'json')
                         }) %>
-                        <%= erp_form_control("dataselect", {
-                            name: 'menu[brand_group_id]',
-                            value: menu.brand_group_id,
-                            text: menu.brand_group_name,
-                            placeholder: t('.choose_brand_group'),
-                            label: t('.brand_group'),
-                            help: t('.help_brand_group'),
-                            url: erp_products.dataselect_backend_brand_groups_path(format: 'json'),
-                            create: {
-                                url: erp_products.new_backend_brand_group_path,
-                                title: t('.create_brand_group'),
-                                container_selector: '.new_brand_group',
-                                input_selector: 'input[name="brand_group[name]"]'
-                            },
-                            edit: {
-                                url: erp_products.edit_backend_brand_group_path(id: ':value'),
-                                title: t('.edit_brand_group'),
-                                container_selector: '.edit_brand_group',
-                            }
-                        }) %>                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <%= erp_form_control("text", {
@@ -218,13 +154,7 @@
                                     options: Erp::Menus::Menu.get_style_color_options()
                                 }) %>
                             </div>
-                        </div>                        
-                        <%= erp_form_control("textarea", {
-                            name: 'menu[meta_keywords]',
-                            value: menu.meta_keywords,                   
-                            label: t('.meta_keywords'),
-                            placeholder: t('.enter_meta_keywords')
-                        }) %>
+                        </div>
                         <%= erp_form_control("textarea", {
                             name: 'menu[meta_description]',
                             value: menu.meta_description,                   
@@ -258,6 +188,25 @@
                                     container_selector: '.new_category',
                                     input_selector: 'input[name="category[name]"]'
                                 }
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-custom ">
+                    <ul class="nav nav-tabs ">
+                        <li class="active"><a href="#tab_category" data-toggle="tab"> <%= t('.description') %></a></li>
+                    </ul>
+                    <div class="tab-content order-details">
+                        <div class="tab-pane addableform-table active" id="tab_category">                            
+                            <%= erp_form_control("editor", {
+                                name: 'menu[description]',
+                                value: menu.description,                   
+                                label: t('.description'),
+                                placeholder: t('.enter_description')
                             }) %>
                         </div>
                     </div>
