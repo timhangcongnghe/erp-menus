@@ -1,13 +1,9 @@
 <table class="table table-advance table-hover table-striped table-checkable order-column">
     <thead>
         <tr>
-            <th width='1%'>
-                <%= erp_datalist_check_all %>
-            </th>
+            <th width='1%'><%= erp_datalist_check_all %></th>
             <% if get_columns(params).include?("name") %>
-                <th class="sortable" sort-by='erp_menus_menus.name'>
-                    <%= t('.name') %>
-                </th>
+                <th class="sortable" sort-by='erp_menus_menus.name'><%= t('.name') %></th>
             <% end %>
             <% if get_columns(params).include?("parent_name") %>
                 <th>
@@ -65,20 +61,8 @@
                     <% if menu.is_hot == true %>
                         <br><span class="label label-sm label-warning"><%= t('.is_hot') %></span>
                     <% end %>
-                    <% if menu.is_show_detail == true %>
-                        <br><span class="label label-sm label-warning"><%= t('.is_show_detail') %></span>
-                    <% end %>
                     <% if menu.use_filter == true %>
                         <br><span class="label label-sm label-warning"><%= t('.use_filter') %></span>
-                    <% end %>
-                    <% if menu.meta_keywords.present? && menu.meta_description.present? %>
-                        <br><span class="label label-sm label-orange"><%= t('.seo_success') %> <%= menu.count_keywords_arr %> từ khóa</span>
-                    <% end %>
-                    <% if menu.number_per_page.present? %>
-                        <br><span class="label label-sm label-success">Hiển thị: <%= menu.number_per_page %> sản phẩm</span>
-                    <% end %>
-                    <% if menu.limit_product_name.present? %>
-                        <br><span class="label label-sm label-success">Hiển thị: <%= menu.limit_product_name %> ký tự</span>
                     <% end %>
                 </td>
                 <% end %>
@@ -153,9 +137,5 @@
         <% end %>
     </tbody>
 </table>
-
-<% if @menus.empty? %>
-    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
-<% end %>
-        
+<% if @menus.empty? %><div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div><% end %>
 <%= erp_datalist_pagination(@menus) %>
