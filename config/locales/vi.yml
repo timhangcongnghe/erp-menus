@@ -41,10 +41,11 @@ vi:
           list:
             name: "Tên"
             seo_success: "Đã SEO với"
-            is_hot: "Hiển thị ngoài trang chủ"
+            is_hot: "Hiển thị trang chủ"
             is_show_detail: "Hiển thị thuộc tính trang danh sách"
             use_filter: "Hiển thị thuộc bộ lọc"
             no_matching_records_found: "Danh sách menu hiện tại đang trống."
+            meta_description: "Có SEO mô tả"
           new:
             menus: "Danh sách menu"
             create: "Thêm menu"

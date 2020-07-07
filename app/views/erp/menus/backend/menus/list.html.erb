@@ -6,14 +6,10 @@
                 <th class="sortable" sort-by='erp_menus_menus.name'><%= t('.name') %></th>
             <% end %>
             <% if get_columns(params).include?("parent_name") %>
-                <th>
-                    <%= t('.parent_name') %>
-                </th>
+                <th><%= t('.parent_name') %></th>
             <% end %>
             <% if get_columns(params).include?("status") %>
-                <th>
-                    <%= t('status') %>
-                </th>
+                <th><%= t('status') %></th>
             <% end %>
             <% if get_columns(params).include?("creator") %>
                 <th>
@@ -39,7 +35,8 @@
                 </td>
                 <% if get_columns(params).include?("name") %>
                     <td>
-                        <%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>                        
+                        <%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>
+                        <% if menu.categories.count > 0 %><br><em><strong>Categories: </strong><% menu.categories.each do |category| %><%= category.name %><% end %></em><% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("parent_name") %>
@@ -63,6 +60,9 @@
                     <% end %>
                     <% if menu.use_filter == true %>
                         <br><span class="label label-sm label-warning"><%= t('.use_filter') %></span>
+                    <% end %>
+                    <% if menu.meta_description.present? %>
+                        <br><span class="label label-sm label-warning"><%= t('.meta_description') %></span>
                     <% end %>
                 </td>
                 <% end %>
