@@ -254,6 +254,63 @@ module Erp::Menus
 
 				return records
 			end
+			
+			def get_archive_products_for_categories(params)
+				records = Erp::Products::Product.where(category_id: self.get_all_related_category_ids)
+
+				if params[:exclude_product_id].present?
+					records = records.where.not(id: params[:exclude_product_id])
+				end
+
+				# filter by brand if menu hass brand
+				if self.brand_id.present?
+					records = records.where(brand_id: self.brand_id)
+				end
+
+				if params[:brand_ids].present?
+					records = records.where(brand_id: params[:brand_ids])
+				end
+
+				if params[:brand_id].present?
+					records = records.where(brand_id: params[:brand_id])
+				end
+				
+				if params[:property_value_ids].present?
+					params.to_unsafe_hash[:property_value_ids].each do |row|
+						records = records.where(id: Erp::Products::ProductsValue.select(:product_id)
+														  .where(properties_value_id: row[1]))
+					end
+        end
+				
+				if params[:price_list].present?
+          ors = []
+          params[:price_list].each do |str|
+            ors << "erp_products_products.price >= #{str.split('-')[0]} AND
+                   erp_products_products.price <= #{str.split('-')[1]}"                                                                              
+          end
+          records = records.where(ors.join(" OR "))
+        end
+
+				if params[:is_business_choises].present?
+					records = records.where(is_business_choices: true)
+				end
+
+				if params[:is_deal].present?
+					records = records.where(is_deal: true)
+				end
+
+				if params[:is_bestseller].present?
+					records = records.where(is_bestseller: true)
+				end
+
+				if params[:sort_by].present?
+					records = records.order(params[:sort_by].gsub('_', ' '))
+				else
+					records = records.order("created_at DESC")
+				end				
+
+				return records
+			end
 
 			def get_products
 				records = Erp::Products::Product.get_active
