@@ -11,7 +11,7 @@ module Erp
 
         # POST /menus/list
         def list
-          @menus = Menu.search(params).paginate(:page => params[:page], :per_page => 10)
+          @menus = Menu.search(params).paginate(:page => params[:page], :per_page => 20)
 
           render layout: nil
         end
