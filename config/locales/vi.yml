@@ -46,6 +46,10 @@ vi:
             use_filter: "Hiển thị thuộc bộ lọc"
             no_matching_records_found: "Danh sách menu hiện tại đang trống."
             meta_description: "Có SEO mô tả"
+            archive_confirm: "Bạn muốn ngưng sử dụng bài viết?"
+            unarchive_confirm: "Bạn muốn sử dụng lại bài viết?"
+            delete_confirm: "Bạn thực sự muốn xóa bài viết?"
+            delete: "Xóa menu"
           new:
             menus: "Danh sách menu"
             create: "Thêm menu"

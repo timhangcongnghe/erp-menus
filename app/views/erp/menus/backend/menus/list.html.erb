@@ -95,14 +95,14 @@
                             <% if !menu.archived %>
                                 <li>
                                     <%= link_to '<i class="fa fa-eye-slash"></i> '.html_safe + t('archive'), 
-                                        erp_menus.archive_backend_menus_path(menu),
+                                        erp_menus.archive_backend_menus_path(id: menu),
                                         method: 'PUT', data: {confirm: t('.archive_confirm')}, class: 'ajax-link' %>
                                 </li>
                             <% end %>
                             <% if menu.archived %>
                                 <li>
                                     <%= link_to '<i class="fa fa-eye"></i> '.html_safe + t('unarchive'), 
-                                        erp_menus.unarchive_backend_menus_path(menu),
+                                        erp_menus.unarchive_backend_menus_path(id: menu),
                                         method: 'PUT', data: {confirm: t('.unarchive_confirm')}, class: 'ajax-link' %>
                                 </li>
                             <% end %>
@@ -110,7 +110,7 @@
                                 <%= link_to '<i class="fa fa-trash"></i> '.html_safe + t('.delete'), 
                                     erp_menus.backend_menu_path(menu),
                                     method: 'DELETE', data: {confirm: t('.delete_confirm')}, class: 'ajax-link' %>
-                            </li>=
+                            </li>
                         </ul>
                     </div>
                 </td>
