@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <%= erp_form_control('checkbox', {
                                     name: 'menu[is_hot]',
                                     id: 'menu_is_hot',
@@ -53,7 +53,17 @@
                                     options: [{value: 'true', text: t('.is_hot')}]
                                 }) %>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[style_show]',
+                                    id: 'menu_style_show',
+                                    value: menu.style_show,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_style_show'),
+                                    options: [{value: 'true', text: t('.style_show')}]
+                                }) %>
+                            </div>
+                            <div class="col-md-4">
                                 <%= erp_form_control('checkbox', {
                                     name: 'menu[use_filter]',
                                     id: 'menu_use_filter',
