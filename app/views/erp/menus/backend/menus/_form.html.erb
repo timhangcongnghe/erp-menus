@@ -82,6 +82,33 @@
                             required: true,
                             errors: menu.errors.full_messages_for(:name)
                         }) %>
+                        <%= erp_form_control("text", {
+                            name: 'menu[short_name]',
+                            value: menu.short_name,                   
+                            label: t('.short_name'),
+                            placeholder: t('.enter_short_name'),
+                        }) %>
+                        <% if menu.custom_title.present? %>
+                            <%= erp_form_control("text", {
+                                name: 'menu[custom_title]',
+                                value: menu.custom_title,
+                                label: t('.custom_title') + ' (' + menu.custom_title.length.to_s + ' ký tự)',
+                                placeholder: t('.enter_custom_title')
+                            }) %>
+                        <% else %>
+                            <%= erp_form_control("text", {
+                                name: 'menu[custom_title]',
+                                value: menu.custom_title,
+                                label: t('.custom_title'),
+                                placeholder: t('.enter_custom_title')
+                            }) %>
+                        <% end %>
+                        <%= erp_form_control("text", {
+                            name: 'menu[custom_alias]',
+                            value: menu.custom_alias,                   
+                            label: t('.custom_alias'),
+                            placeholder: t('.enter_custom_alias')
+                        }) %>
                         <%= erp_form_control("dataselect", {
                             name: 'menu[parent_id]',
                             value: menu.parent_id,
