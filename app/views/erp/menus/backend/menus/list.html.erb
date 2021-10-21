@@ -37,9 +37,15 @@
                     <td>
                         <%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>
                         <% if menu.style_show? %><br><em><strong>Child menu: </strong>Dạng ngang</em><% end %>
-                        <% if menu.short_name.present? %><br><em><strong>Tên rút gọn: </strong><%= menu.short_name %></em><% end %>
-                        <% if menu.custom_title.present? %><br><em><strong>Custom title: </strong><%= menu.custom_title %></em><% end %>
-                        <% if menu.categories.count > 0 %><br><em><strong>Chuyên mục: </strong><% menu.categories.each do |category| %><%= category.name %><% end %></em><% end %>
+                        <% if menu.short_name.present? %>
+                            <br><em><strong>Tên rút gọn: </strong><%= menu.short_name %></em>
+                        <% end %>
+                        <% if menu.custom_title.present? %>
+                            <br><em><strong>Thẻ title (<%= menu.custom_title.length %>): </strong><%= menu.custom_title %></em>
+                        <% end %>
+                        <% if menu.categories.count > 0 %>
+                            <br><em><strong>Chuyên mục: </strong><% menu.categories.each do |category| %><%= category.name %><% end %></em>
+                        <% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("parent_name") %>
