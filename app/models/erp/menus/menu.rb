@@ -1,10 +1,10 @@
 module Erp::Menus
   class Menu < ApplicationRecord
-		include Erp::CustomOrder
-		mount_uploader :image_url_1, Erp::Menus::MenuImageUploader
-		mount_uploader :image_url_2, Erp::Menus::MenuImageUploader
-		mount_uploader :menu_icon, Erp::Menus::MenuImageUploader
-		mount_uploader :image_menu, Erp::Menus::MenuImageUploader
+	include Erp::CustomOrder
+	mount_uploader :image_url_1, Erp::Menus::MenuImageUploader
+	mount_uploader :image_url_2, Erp::Menus::MenuImageUploader
+	mount_uploader :menu_icon, Erp::Menus::MenuImageUploader
+	mount_uploader :image_menu, Erp::Menus::MenuImageUploader
 
     validates :name, :presence => true
     belongs_to :creator, class_name: "Erp::User"
@@ -13,25 +13,28 @@ module Erp::Menus
     has_many :related_menus, foreign_key: "parent_id", inverse_of: :parent, dependent: :destroy
     accepts_nested_attributes_for :related_menus, :reject_if => lambda { |a| a[:menu_id].blank? }, :allow_destroy => true
 
+	belongs_to :redirect, class_name: 'Erp::Menus::Menu', foreign_key: 'redirect_id', optional: true
+
     if Erp::Core.available?("products")
-			has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
-			belongs_to :brand_group, class_name: "Erp::Products::BrandGroup", optional: true
-			belongs_to :brand, class_name: "Erp::Products::Brand", foreign_key: "brand_id", optional: true
+		has_and_belongs_to_many :categories, class_name: "Erp::Products::Category"
+		belongs_to :brand_group, class_name: "Erp::Products::BrandGroup", optional: true
+		belongs_to :brand, class_name: "Erp::Products::Brand", foreign_key: "brand_id", optional: true
+		has_and_belongs_to_many :properties_values, -> { order 'erp_products_properties_values.custom_order' }, class_name: 'Erp::Products::PropertiesValue', :join_table => 'erp_menus_menus_properties_values'
 
-			# display brand group name
-			def brand_group_name
-				brand_group.present? ? brand_group.name : ''
-			end
-
-			def get_brand_groups
-				brand_group.brand_group_details
-			end
-
-			# display brand name
-			def brand_name
-				brand.present? ? brand.name : ''
-			end
+		# display brand group name
+		def brand_group_name
+			brand_group.present? ? brand_group.name : ''
 		end
+
+		def get_brand_groups
+			brand_group.brand_group_details
+		end
+
+		# display brand name
+		def brand_name
+			brand.present? ? brand.name : ''
+		end
+	end
 
     STYLE_COLOR_1 = 'supper1'
     STYLE_COLOR_2 = 'supper2'
@@ -156,8 +159,12 @@ module Erp::Menus
 
     # display name
     def parent_name
-			parent.present? ? parent.name : ''
-		end
+		parent.present? ? parent.name : ''
+	end
+
+	def redirect_name
+		redirect.present? ? redirect.name : ''
+	end
 
     # get self and children ids
     def get_self_and_children_ids

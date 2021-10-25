@@ -149,7 +149,7 @@ module Erp
         def dataselect
           respond_to do |format|
             format.json {
-              render json: Menu.dataselect(params[:keyword].split('/').last.strip)
+              render json: Menu.dataselect(params[:keyword].split('/').last)
             }
           end
         end
@@ -194,9 +194,9 @@ module Erp
 
           # Only allow a trusted parameter "white list" through.
           def menu_params
-            params.fetch(:menu, {}).permit(:image_url_1, :image_url_2, :image_menu, :image_menu_title, :image_menu_link, :name, :custom_title, :custom_alias, :short_name, :description, :parent_id, :use_filter, :is_hot, :style_icon, :style_show,
+            params.fetch(:menu, {}).permit(:is_redirect, :not_create_link, :redirect_id, :image_url_1, :image_url_2, :image_menu, :image_menu_title, :image_menu_link, :name, :custom_title, :custom_alias, :short_name, :description, :parent_id, :use_filter, :is_hot, :style_icon, :style_show,
                                            :meta_keywords, :meta_description, :is_show_detail, :number_per_page, :limit_product_name, :style_color, :brand_id, :image_menu_link_1, :image_menu_link_2, :menu_icon, :brand_group_id, category_ids: [],
-                                           :related_menus_attributes => [:id, :menu_id, :_destroy])
+                                           :related_menus_attributes => [:id, :menu_id, :_destroy], properties_value_ids: [])
           end
       end
     end

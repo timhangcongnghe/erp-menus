@@ -115,13 +115,37 @@
                             text: menu.parent_name,
                             placeholder: t('.choose_parent_menu'),
                             label: t('.parent_menu'),
-                            url: erp_menus.dataselect_backend_menus_path(format: 'json'),
-                            create: {
-                                url: erp_menus.new_backend_menu_path,
-                                title: t('.create_menu'),
-                                container_selector: '.new_menu',
-                                input_selector: 'input[name="menu[name]"]'
-                            }
+                            url: erp_menus.dataselect_backend_menus_path(format: 'json')
+                        }) %>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[is_redirect]',
+                                    id: 'menu_is_redirect',
+                                    value: menu.is_redirect,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_is_redirect'),
+                                    options: [{value: 'true', text: t('.is_redirect')}]
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'menu[not_create_link]',
+                                    id: 'menu_not_create_link',
+                                    value: menu.not_create_link,
+                                    not_selected_value: 'false',
+                                    label: t('.menu_not_create_link'),
+                                    options: [{value: 'true', text: t('.not_create_link')}]
+                                }) %>
+                            </div>
+                        </div>
+                        <%= erp_form_control("dataselect", {
+                            name: 'menu[redirect_id]',
+                            value: menu.redirect_id,
+                            text: menu.redirect_name,
+                            placeholder: t('.choose_redirect_menu'),
+                            label: t('.redirect_menu'),
+                            url: erp_menus.dataselect_backend_menus_path(format: 'json')
                         }) %>
                     </div>
                 </div>
@@ -198,6 +222,29 @@
                             label: t('.meta_description'),
                             placeholder: t('.enter_meta_description')
                         }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-custom ">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#tab_properties_value" data-toggle="tab"> <%= t('.add_properties_values') %> </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content order-details">
+                        <div class="tab-pane addableform-table active" id="tab_properties_value">
+                            <%= erp_form_control("dataselect", {
+                                name: 'menu[properties_value_ids][]',
+                                values: (menu.properties_values.map {|properties_value| {text: (properties_value.property.nil? ? '' : "#{properties_value.property.property_group_name} / " + "#{properties_value.property_name} / ") + properties_value.value, value: properties_value.id}}),
+                                multiple: true,
+                                label: t('.related_properties_values'),
+                                placeholder: t('.choose_properties_values'),
+                                url: erp_products.dataselect_for_menu_backend_properties_values_path(format: 'json')
+                            }) %>
+                        </div>
                     </div>
                 </div>
             </div>
