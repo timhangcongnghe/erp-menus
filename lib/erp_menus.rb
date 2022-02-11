@@ -1,2 +1,2 @@
-require "erp/menus"
-require "erp/menus/engine"
+require 'erp/menus'
+require 'erp/menus/engine'

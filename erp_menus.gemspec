@@ -1,27 +1,17 @@
-$:.push File.expand_path("../lib", __FILE__)
-
-# Maintain your gem's version:
-require "erp/menus/version"
-
-# Describe your gem and declare its dependencies:
+$:.push File.expand_path('../lib', __FILE__)
+require 'erp/menus/version'
 Gem::Specification.new do |s|
-  s.name        = "erp_menus"
+  s.name        = 'erp_menus'
   s.version     = Erp::Menus::VERSION
-  s.authors     = ["Luan Pham",
-                  "Son Nguyen",
-                  "Hung Nguyen"]
-  s.email       = ["luanpm@hoangkhang.com.vn",
-                  "sonnn@hoangkhang.com.vn",
-                  "hungnt@hoangkhang.com.vn"]
-  s.homepage    = "http://globalnaturesoft.com/"
-  s.summary     = "Menus features of Erp System."
-  s.description = "Menus features of Erp System."
-  s.license     = "MIT"
-
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
-
-  s.add_dependency "rails"
-  s.add_dependency "erp_core"
-  s.add_dependency "deface"
+  s.authors     = ['Công Ty TNHH Giải Pháp CNTT Và Truyền Thông Hoàng Khang']
+  s.email       = ['kinhdoanh@hoangkhang.com.vn']
+  s.homepage    = 'https://timhangcongnghe.com/'
+  s.summary     = 'Tìm Hàng Công Nghệ'
+  s.description = 'Tìm Hàng Công Nghệ là đơn vị cung cấp các sản phẩm, dịch vụ thuộc lĩnh vực Công Nghệ Thông Tin do Công Ty TNHH Giải Pháp CNTT Và Truyền Thông Hoàng Khang phụ trách và phát triển.'
+  s.license     = 'MIT'
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  s.test_files = Dir['test/**/*']
+  s.add_dependency 'rails'
+  s.add_dependency 'erp_core'
+  s.add_dependency 'deface'
 end

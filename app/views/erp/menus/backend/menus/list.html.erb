@@ -1,125 +1,63 @@
 <table class="table table-advance table-hover table-striped table-checkable order-column">
     <thead>
         <tr>
-            <th width='1%'><%= erp_datalist_check_all %></th>
-            <% if get_columns(params).include?("name") %>
-                <th class="sortable" sort-by='erp_menus_menus.name'><%= t('.name') %></th>
-            <% end %>
-            <% if get_columns(params).include?("parent_name") %>
-                <th><%= t('.parent_name') %></th>
-            <% end %>
-            <% if get_columns(params).include?("status") %>
-                <th><%= t('status') %></th>
-            <% end %>
-            <% if get_columns(params).include?("creator") %>
-                <th>
-                    <%= t('creator') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("created_at") %>
-                <th class="sortable" sort-by='erp_menus_menus.created_at'>
-                    <%= t('created_at') %>
-                </th>
-            <% end %>
-            <th width="7%" class="sortable text-nowrap" sort-by='erp_menus_menus.custom_order'>
-                <%= t('custom_order') %>                
-            </th>
-            <th width="7%"><%= t('actions') %></th>
+            <th width='1%' class="text-left"><%= erp_datalist_check_all %></th>
+            <% if get_columns(params).include?('name') %><th class="text-center">Tên menu</th><% end %>
+            <% if get_columns(params).include?('parent_name') %><th class="text-center">Menu cha</th><% end %>
+            <% if get_columns(params).include?('status') %><th class="text-center">Trạng thái</th><% end %>
+            <% if get_columns(params).include?('creator') %><th class="text-center">Người tạo</th><% end %>
+            <% if get_columns(params).include?('created_at') %><th class="text-center">Ngày tạo</th><% end %>
+            <th width="15%" class="sortable text-nowrap text-center" sort-by='erp_menus_menus.custom_order'>Vị trí sắp xếp</th>
+            <th width="8%" class="text-right">Thao tác</th>
         </tr>
     </thead>
     <tbody>
         <% @menus.each do |menu| %>
             <tr class="odd gradeX">
-                <td>
-                    <%= erp_datalist_check_row(id: menu.id) %>
-                </td>
-                <% if get_columns(params).include?("name") %>
-                    <td>
-                        <%= link_to menu.name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>
-                        <% if menu.style_show? %><br><em><strong>Child menu: </strong>Dạng ngang</em><% end %>
-                        <% if menu.short_name.present? %>
-                            <br><em><strong>Tên rút gọn: </strong><%= menu.short_name %></em>
-                        <% end %>
-                        <% if menu.custom_title.present? %>
-                            <br><em><strong>Thẻ title (<%= menu.custom_title.length %>): </strong><%= menu.custom_title %></em>
-                        <% end %>
-                        <% if menu.categories.count > 0 %>
-                            <br><em><strong>Chuyên mục: </strong><% menu.categories.each do |category| %><%= category.name %><% end %></em>
+                <td class="text-left"><%= erp_datalist_check_row(id: menu.id) %></td>
+                <% if get_columns(params).include?('name') %>
+                    <td class="text-left">
+                        <%= link_to menu.get_name, erp_menus.edit_backend_menu_path(menu), class: 'title' %>
+                        <% if menu.short_name.present? %><br><em><strong>Rút gọn: </strong><%= menu.get_short_name %></em><% end %>
+                        <% if menu.style_show? %><br><em><strong>Menu con: </strong>Hiển thị dạng ngang</em><% end %>
+                        <% if menu.is_redirect? %><br><em><strong>Chuyển hướng: </strong><%= menu.get_redirect_name %> (<% if menu.not_create_link? %>Không URL<% else %>Có URL<% end %>)</em><% end %>
+                        <% if menu.custom_title.present? %><br><em><strong>Tiêu đề trang (<%= menu.get_custom_title.length %> ký tự): </strong><%= menu.get_custom_title %></em><% end %>
+                        <% if menu.categories.count > 0 %><br><em><strong>Chuyên mục: </strong><% menu.categories.each do |category| %><%= category.get_name %><% end %></em><% end %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?('parent_name') %><td class="text-center"><%= menu.parent.name if menu.parent.present? %></td><% end %>
+                <% if get_columns(params).include?('status') %>
+                    <td class="text-center">
+                        <% if menu.archived == true %>
+                            <span class="label label-danger">Đang bị ẩn</span>
+                        <% else %>
+                            <span class="label label-success">Đang hiển thị</span>
+                            <% if menu.style_show? %><br><span class="label label-sm label-success">Menu con hiện dạng ngang</span><% end %>
+                            <% if menu.use_filter? %><br><span class="label label-sm label-success">Lọc theo thuộc tính</span><% end %>
+                            <% if menu.is_redirect? %><br><span class="label label-sm label-warning">Chuyển hướng url</span><% end %>
+                            <% if menu.not_create_link? %><br><span class="label label-sm label-warning">Không được tạo url</span><% end %>
+                            <% if !menu.meta_description.present? %><br><span class="label label-sm label-warning">Chưa có SEO Description</span><% end %>
+                            <% if !menu.description.present? %><br><span class="label label-sm label-warning">Chưa có bài giới thiệu</span><% end %>
                         <% end %>
                     </td>
                 <% end %>
-                <% if get_columns(params).include?("parent_name") %>
-                    <td>
-                        <%= menu.parent.name if menu.parent.present? %>
-                    </td>
-                <% end %>
-                <% if get_columns(params).include?("status") %>
-                <td>
-                    <% if menu.archived == true %>
-                        <span class="label label-danger"><%= t('archived') %></span>
-                    <% else %>
-                        <span class="label label-success"><%= t('active') %></span>
-                    <% end %>
-                    <% if menu.is_hot == true %>
-                        <br><span class="label label-sm label-warning"><%= t('.is_hot') %></span>
-                    <% end %>
-                    <% if menu.use_filter == true %>
-                        <br><span class="label label-sm label-success"><%= t('.use_filter') %></span>
-                    <% end %>
-                    <% if menu.meta_description.present? %>
-                        <br><span class="label label-sm label-warning"><%= t('.meta_description') %></span>
-                    <% end %>
-                </td>
-                <% end %>
-                <% if get_columns(params).include?("creator") %>
-                    <td>
-                        <%= erp_component('avatar', {
-                            user: menu.creator
-                        }) %>
-                    </td>
-                <% end %>
-                <% if get_columns(params).include?("created_at") %>
-                    <td><%= menu.created_at.strftime("%d/%m/%Y") %></td>
-                <% end %>
+                <% if get_columns(params).include?('creator') %><td class="text-center"><%= erp_component('avatar', {user: menu.creator}) %></td><% end %>
+                <% if get_columns(params).include?('created_at') %><td><%= menu.created_at.strftime('%d-%m-%Y') %></td><% end %>
                 <td class="text-center text-semibold">
-                    <%= menu.custom_order %><br>
+                    <%= menu.custom_order %>
                     <% if params[:sort_by] == 'erp_menus_menus.custom_order' %>
-                        <%= link_to '<i class="fa fa-caret-square-o-up icon-big"></i>'.html_safe, 
-                            erp_menus.move_up_backend_menus_path(id: menu), method: 'PUT', class: 'ajax-link' %>
-                        <%= link_to '<i class="fa fa-caret-square-o-down icon-big"></i>'.html_safe, 
-                            erp_menus.move_down_backend_menus_path(id: menu), method: 'PUT', class: 'ajax-link' %>
+                        <br>
+                        <%= link_to '<i class="fa fa-caret-square-o-up icon-big"></i>'.html_safe, erp_menus.move_up_backend_menus_path(id: menu), method: 'PUT', class: 'ajax-link' %>
+                        <%= link_to '<i class="fa fa-caret-square-o-down icon-big"></i>'.html_safe, erp_menus.move_down_backend_menus_path(id: menu), method: 'PUT', class: 'ajax-link' %>
                     <% end %>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <a class="btn btn-default btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="fa fa-cog"></i><%= t('core.options') %><i class="fa fa-angle-down"></i>
-                        </a>
+                        <a class="btn btn-default btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-cog"></i>Lựa chọn<i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu pull-right">
-                            <li>
-                                <%= link_to '<i class="fa fa-edit"></i> '.html_safe + t('.edit'), 
-                                    erp_menus.edit_backend_menu_path(menu) %>
-                            </li>
-                            <li class="divider"></li>
-                            <% if !menu.archived %>
-                                <li>
-                                    <%= link_to '<i class="fa fa-eye-slash"></i> '.html_safe + t('archive'), 
-                                        erp_menus.archive_backend_menus_path(id: menu),
-                                        method: 'PUT', data: {confirm: t('.archive_confirm')}, class: 'ajax-link' %>
-                                </li>
-                            <% end %>
-                            <% if menu.archived %>
-                                <li>
-                                    <%= link_to '<i class="fa fa-eye"></i> '.html_safe + t('unarchive'), 
-                                        erp_menus.unarchive_backend_menus_path(id: menu),
-                                        method: 'PUT', data: {confirm: t('.unarchive_confirm')}, class: 'ajax-link' %>
-                                </li>
-                            <% end %>
-                            <li>
-                                <%= link_to '<i class="fa fa-trash"></i> '.html_safe + t('.delete'), 
-                                    erp_menus.backend_menu_path(menu),
-                                    method: 'DELETE', data: {confirm: t('.delete_confirm')}, class: 'ajax-link' %>
-                            </li>
+                            <% if !menu.archived? %><li><%= link_to '<i class="fa fa-eye-slash"></i> Ẩn menu'.html_safe, erp_menus.archive_backend_menus_path(id: menu), method: 'PUT', data: {confirm: 'Bạn có chắc chắn muốn ẩn menu này không?'}, class: 'ajax-link' %></li><% end %>
+                            <% if menu.archived? %><li><%= link_to '<i class="fa fa-eye"></i> Hiện menu'.html_safe, erp_menus.unarchive_backend_menus_path(id: menu), method: 'PUT', data: {confirm: 'Bạn có chắc chắn muốn hiện menu này không?'}, class: 'ajax-link' %></li><% end %>
+                            <li><%= link_to '<i class="fa fa-trash"></i> Xóa menu'.html_safe, erp_menus.backend_menu_path(menu), method: 'DELETE', data: {confirm: 'Bạn có chắc chắn muốn xóa menu này không?'}, class: 'ajax-link' %></li>
                         </ul>
                     </div>
                 </td>
@@ -127,5 +65,5 @@
         <% end %>
     </tbody>
 </table>
-<% if @menus.empty? %><div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div><% end %>
+<% if @menus.empty? %><div class="datalist-empty-line">Danh Sách Menu Website Hiện Chưa Có Lựa Chọn Phù Hợp</div><% end %>
 <%= erp_datalist_pagination(@menus) %>

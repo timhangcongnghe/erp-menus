@@ -19,7 +19,6 @@ class CreateErpMenusMenus < ActiveRecord::Migration[5.0]
       t.references :brand_group, index: true, references: :erp_products_brand_groups
       t.integer :custom_order
       t.integer :level
-
       t.timestamps
     end
   end
